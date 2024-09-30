@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        autowire: true # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    Smoq\SimsyCMSBundle\:
+        resource: "../../"
+        exclude:
+            - "../../DependencyInjection/"
+            - "../../Resources/"
+            - "../../Tests/"
+
+    Smoq\SimsyCMSBundle\Command\:
+        resource: "../../Command/*"
+        tags: ["console.command"]

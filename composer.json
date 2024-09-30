@@ -1,0 +1,27 @@
+{
+    "name": "smoq/simsy-cms-bundle",
+    "description": "A simple & easy CMS bundle to drop into a Symfony application",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Smoq\\SimsyCMS\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Le Flem Paul",
+            "email": "paul.leflem@icloud.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/dbal": "^3.6",
+        "doctrine/orm": "^2.15"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.17",
+        "phpstan/phpstan": "^1.10"
+    }
+}
