@@ -55,6 +55,9 @@ class CustomBlockType extends AbstractType
         $builder
             ->add('content', TextType::class, [
                 'label' => 'Block content',
+                'attr' => [
+                    'class' => 'simsy-input'
+                ],
             ])
         ;
     }

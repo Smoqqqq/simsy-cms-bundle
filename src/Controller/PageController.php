@@ -59,7 +59,8 @@ class PageController extends AbstractController
 
         return $this->render('@SimsyCMS/page/edit.html.twig', [
             'form' => $form,
-            'sections' => $page->getSections()
+            'sections' => $page->getSections(),
+            'page' => $page,
         ]);
     }
 

@@ -11,11 +11,13 @@ Encore
     .setPublicPath('/bundles/simsy-cms/')
     .setManifestKeyPrefix('bundles/simsy-cms')
 
-    .addEntry('simsy_cms', './src/assets/js/simsy.js')
+    .addEntry('simsy_cms', './src/assets/js/simsy.ts')
 
     .enableSourceMaps(false)
     .enableVersioning(false)
     .disableSingleRuntimeChunk()
     .enableSassLoader()
+    .enableTypeScriptLoader()
+    .cleanupOutputBeforeBuild()
 
 module.exports = Encore.getWebpackConfig();

@@ -50,7 +50,14 @@ abstract class Block
 
     public function getFormTypeClass(): string
     {
-        throw new LogicException('This method should be implemented in the child class');
+        $guessedClassName = str_replace('\Entity\\', '\Form\\', static::class) . 'Type';
+
+        if (class_exists($guessedClassName)) {
+            return $guessedClassName;
+        }
+
+        $shortClassName = (new \ReflectionClass($this))->getShortName();
+        throw new LogicException('You must override the getFormTypeClass method of '.static::class.' to return your custom block form class, or create one in "'.$guessedClassName.'Type".');
     }
 
     public function getImageSrc(): ?string

@@ -12,4 +12,4 @@ services:
 
     Smoq\SimsyCMS\EntityTablePrefixer:
         arguments:
-            $prefix: 'simsy_'
+            $prefix: 'simsy_cms_'

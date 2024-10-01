@@ -3,6 +3,7 @@
 namespace Smoq\SimsyCMS\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Smoq\SimsyCMS\Form\SingleTextBlockType;
 
 #[ORM\Entity]
 class SingleTextBlock extends Block

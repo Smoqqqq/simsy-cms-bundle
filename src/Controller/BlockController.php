@@ -24,7 +24,7 @@ class BlockController extends AbstractController
         ]);
     }
 
-    #[Route('/{sectionId}/create/{blockClass}', name: 'create', methods: ['GET', 'POST'], requirements: ['sectionId' => '\d+', 'blockClass' => '[a-zA-Z0-9_]+'])]
+    #[Route('/{sectionId}/create/{blockClass}', name: 'create', methods: ['GET', 'POST'], requirements: ['sectionId' => '\d+', 'blockClass' => '[a-zA-Z0-9_\\\]+'])]
     public function create(
         #[MapEntity(mapping: ['sectionId' => 'id'])] Section $section,
         string $blockClass,
