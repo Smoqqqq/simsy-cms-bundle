@@ -14,11 +14,11 @@ class Section
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 512)]
+    #[ORM\Column(length: 512)]
     private string $name;
 
-    #[ORM\Column(type: 'string', length: 512)]
-    private string $description;
+    #[ORM\Column(length: 512, nullable: true)]
+    private ?string $description;
 
     /**
      * @var Collection<int, Page>
@@ -36,6 +36,35 @@ class Section
     {
         $this->pages = new ArrayCollection();
         $this->blocks = new ArrayCollection();
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 
     /**

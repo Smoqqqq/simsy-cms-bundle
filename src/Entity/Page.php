@@ -35,7 +35,7 @@ class Page
     /**
      * @var Collection<int, Section>
      */
-    #[ORM\ManyToMany(targetEntity: Section::class, inversedBy: 'pages')]
+    #[ORM\ManyToMany(targetEntity: Section::class, inversedBy: 'pages', cascade: ['persist', 'remove'])]
     private Collection $sections;
 
     public function __construct()

@@ -1,4 +1,4 @@
-controllers:
+simsy_cms_controllers:
     resource:
         path: ../../Controller/
         namespace: Smoq\SimsyCMS\Controller

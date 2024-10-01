@@ -7,6 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity]
 class DualTextBlock extends Block
 {
+    protected string $name = 'Dual text block';
+    protected string $description = 'A block with two text, side to side';
+    protected ?string $imageSrc = 'bundles/simsycms/images/blocks/dual_text_block.png';
+
     #[ORM\Column(type: 'text')]
     private string $leftContent;
 

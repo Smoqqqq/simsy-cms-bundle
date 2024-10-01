@@ -15,5 +15,42 @@
         </div>
     </div>
 </fieldset>
+
+<fieldset class="simsy-section">
+    <legend>Sections</legend>
+    <p>Subdivide your content into sections to reuse them in other pages.</p>
+
+    <div class="accordion" id="sectionsAccordion">
+        {% for section in sections %}
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#sectionCollapseItem{{ section.id }}" aria-expanded="false"
+                            aria-controls="sectionCollapseItem{{ section.id }}">
+                        {{ section.name }}
+                    </button>
+                </h2>
+                <div id="sectionCollapseItem{{ section.id }}" class="accordion-collapse collapse"
+                     data-bs-parent="#sectionsAccordion">
+                    <div class="accordion-body">
+                        <label for="section-name-{{ section.id }}">Name</label>
+                        <input type="text" id="section-name-{{ section.id }}" name="section-name-{{ section.id }}"
+                               class="simsy-input" value="{{ section.name }}">
+
+                        <label for="section-description-{{ section.id }}">Description</label>
+                        <textarea id="section-description-{{ section.id }}" name="section-description-{{ section.id }}"
+                                  class="simsy-input">{{ section.description }}</textarea>
+
+                        <fieldset class="simsy-section">
+                            <legend>Blocks</legend>
+
+                            {{ render(path('simsy_cms_block_select', { sectionId: section.id })) }}
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</fieldset>
 <button type="submit" class="btn btn-primary float-end">Save</button>
 {{ form_end(form) }}

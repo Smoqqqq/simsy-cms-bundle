@@ -6,12 +6,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use Smoq\SimsyCMS\Entity\Page;
 use Smoq\SimsyCMS\Form\PageType;
 use Smoq\SimsyCMS\Repository\PageRepository;
+use Smoq\SimsyCMS\Service\BlockService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/page', name: 'simsy_page_')]
+#[Route('/page', name: 'simsy_cms_page_')]
 class PageController extends AbstractController
 {
     #[Route('/', name: 'search', methods: ['GET'])]
@@ -23,7 +24,7 @@ class PageController extends AbstractController
     }
 
     #[Route('/create', name: 'create', methods: ['GET', 'POST'])]
-    public function create(Request $request, EntityManagerInterface $em): Response
+    public function create(Request $request, EntityManagerInterface $em, BlockService $blockService): Response
     {
         $page = new Page();
         $form = $this->createForm(PageType::class, $page);
@@ -34,11 +35,12 @@ class PageController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'Page created successfully');
-            return $this->redirectToRoute('simsy_page_search');
+            return $this->redirectToRoute('simsy_cms_page_search');
         }
 
         return $this->render('@SimsyCMS/page/create.html.twig', [
             'form' => $form,
+            'blocks' => $blockService->getAvailableBlocks(),
         ]);
     }
 
@@ -52,11 +54,12 @@ class PageController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'Page updated successfully');
-            return $this->redirectToRoute('simsy_page_search', ['id' => $page->getId()]);
+            return $this->redirectToRoute('simsy_cms_page_search', ['id' => $page->getId()]);
         }
 
         return $this->render('@SimsyCMS/page/edit.html.twig', [
             'form' => $form,
+            'sections' => $page->getSections()
         ]);
     }
 
@@ -72,6 +75,6 @@ class PageController extends AbstractController
             $this->addFlash('error', 'Invalid CSRF token, please try again');
         }
 
-        return $this->redirectToRoute('simsy_page_create');
+        return $this->redirectToRoute('simsy_cms_page_create');
     }
 }

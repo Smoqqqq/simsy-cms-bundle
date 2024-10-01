@@ -14,7 +14,7 @@ You need to register Simsy's routes in your application. To do this, import our 
 ```yaml
 # config/routes.yaml
 simsy:
-    resource: '@SimsyCMSBundle/Resources/config/routes.yaml'
+    resource: '@SimsyCMS/Resources/config/routes.yaml'
 ```
 
 ### Including assets

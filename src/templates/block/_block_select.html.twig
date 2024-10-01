@@ -1,0 +1,19 @@
+<div class="row block-selector">
+    {% for block in blocks %}
+        <div class="col-md-4">
+            <a href="{{ path('simsy_cms_block_create', { sectionId: sectionId, blockClass: block.class}) }}" class="card d-block text-decoration-none text-black">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            {% if block.imageSrc %}<img src="{{ asset(block.imageSrc) }}" alt="{{ block.name }}">{% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            <h5 class="card-title">{{ block.name }}</h5>
+                            <p class="card-text">{{ block.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>

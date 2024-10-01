@@ -16,21 +16,16 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-class SimsyCMSExtension extends Extension implements PrependExtensionInterface, ExtensionInterface
+class SimsyCMSExtension extends Extension implements ExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
-    }
 
-    public function prepend(ContainerBuilder $container): void
-    {
-        // TODO: Implement prepend() method.
-    }
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
 
-    public function getAlias(): string
-    {
-        return parent::getAlias();
+        $container->setParameter('simsy_cms.custom_blocks', $config['custom_blocks']);
     }
 }

@@ -3,52 +3,37 @@
 namespace Smoq\SimsyCMS\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 
 #[ORM\MappedSuperclass]
-class Block
+abstract class Block
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private int $id;
 
-    #[ORM\Column(type: 'string', length: 512)]
-    private string $name;
-
-    #[ORM\Column(type: 'string', length: 512)]
-    private string $description;
+    protected string $name = 'Block missing configuration';
+    protected string $description = 'If you see this, that means this block has not been configured properly.';
+    protected ?string $imageSrc = null;
 
     #[ORM\ManyToOne(inversedBy: 'blocks')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Section $section = null;
 
-    protected function getId(): int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    protected function getName(): string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    protected function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    protected function getDescription(): string
+    public function getDescription(): string
     {
         return $this->description;
-    }
-
-    protected function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
     }
 
     public function getSection(): ?Section
@@ -61,5 +46,20 @@ class Block
         $this->section = $section;
 
         return $this;
+    }
+
+    public function getFormTypeClass(): string
+    {
+        throw new LogicException('This method should be implemented in the child class');
+    }
+
+    public function getImageSrc(): ?string
+    {
+        return $this->imageSrc;
+    }
+
+    protected function getClass(): string
+    {
+        return static::class;
     }
 }

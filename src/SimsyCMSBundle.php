@@ -40,12 +40,4 @@ class SimsyCMSBundle extends Bundle
                 ->end() // twitter
             ->end();
     }
-
-    public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
-    {
-        // the "$config" variable is already merged and processed so you can
-        // use it directly to configure the service container (when defining an
-        // extension class, you also have to do this merging and processing)
-        dd($container->services()->get('simsy_cms.blocks'));
-    }
 }

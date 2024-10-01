@@ -1,4 +1,4 @@
-<form method="POST" action="{{ path('simsy_page_delete', { id: page.id }) }}">
+<form method="POST" action="{{ path('simsy_cms_page_delete', { id: page.id }) }}">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete_page_' ~ page.id) }}">
     <button type="submit" class="btn btn-sm btn-danger">Delete</button>

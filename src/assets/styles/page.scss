@@ -1,0 +1,30 @@
+.block-selector {
+    .card {
+        height: 100%;
+
+        .card-body {
+            height: 100%;
+
+            .row {
+                height: 100%;
+
+                > div {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+
+            .col-md-4 {
+                display: grid;
+                place-items: center;
+
+                img {
+                    width: 90%;
+                    height: 50px;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}
