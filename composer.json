@@ -16,9 +16,12 @@
     ],
     "require": {
         "php": ">=8.3",
-        "doctrine/doctrine-bundle": "^2.7",
-        "doctrine/dbal": "^3.6",
-        "doctrine/orm": "^2.15"
+        "symfony/orm-pack": "^2.4",
+        "symfony/framework-bundle": "^7.1",
+        "symfony/form": "^7.1",
+        "symfony/asset-mapper": "^7.1",
+        "symfony/asset": "^7.1",
+        "symfony/twig-pack": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.17",

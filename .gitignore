@@ -1,3 +1,5 @@
 /vendor/
 /.guidelines/
 .idea
+/node_modules/
+src/Resources/public/fonts/

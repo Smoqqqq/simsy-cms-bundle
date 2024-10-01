@@ -1,0 +1,19 @@
+{{ form_start(form) }}
+{{ form_row(form.name) }}
+{{ form_row(form.description) }}
+
+<fieldset id="google-preview" class="simsy-section">
+    <legend>Seo</legend>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.seoTitle) }}
+            {{ form_row(form.seoDescription) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.seoKeywords) }}
+            {{ form_row(form.url) }}
+        </div>
+    </div>
+</fieldset>
+<button type="submit" class="btn btn-primary float-end">Save</button>
+{{ form_end(form) }}

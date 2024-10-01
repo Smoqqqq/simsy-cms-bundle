@@ -6,9 +6,25 @@
                     "Smoq\\SimsyCMS\\SimsyCMSBundle": [
                         "all"
                     ]
+                },
+                "copy-from-recipe": {
+                    "config/": "%CONFIG_DIR%"
                 }
             },
-            "ref": "fbfa8e63e66d23fcd44997f4040b2445bc5a424d"
+            "files": {
+                "config/packages/simsy_cms.yaml": {
+                    "contents": [
+                        "simsy_cms:",
+                        "    blocks: ",
+                        "        # my_custom_block:",
+                        "            # name: 'My custom block'",
+                        "            # class: App\\Entity\\MyCustomBlock",
+                        ""
+                    ],
+                    "executable": false
+                }
+            },
+            "ref": "fbfa8e63e66d23fcd44997f4040b2445bc5a424f"
         }
     }
 }

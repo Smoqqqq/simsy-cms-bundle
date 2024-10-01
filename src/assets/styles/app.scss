@@ -1,0 +1,25 @@
+@import "variables";
+
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons";
+
+@import "page";
+@import "form";
+@import "btn";
+
+.simsy-section {
+    padding: 25px 0;
+    margin: 25px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    --bs-card-border-color: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.min-height-100vh {
+    min-height: 100vh;
+}

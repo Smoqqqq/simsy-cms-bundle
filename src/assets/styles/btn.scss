@@ -1,0 +1,28 @@
+.btn {
+    border-radius: 10px;
+    background: transparent;
+    border-width: 2px;
+    color: black;
+
+    &.btn-primary {
+        &:hover {
+            background: $primary;
+            border-color: $primary;
+        }
+    }
+
+    &.btn-secondary {
+        &:hover {
+            background: $secondary;
+            border-color: $secondary;
+        }
+    }
+
+    &.btn-danger {
+        &:hover {
+            color: white;
+            background: $danger;
+            border-color: $danger;
+        }
+    }
+}

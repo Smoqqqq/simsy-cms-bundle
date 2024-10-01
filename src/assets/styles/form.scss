@@ -1,0 +1,30 @@
+.simsy-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid $simsy-theme-light;
+    border-radius: 6px;
+    box-sizing: border-box;
+
+    &:active, &:focus {
+        outline: none;
+        border-color: $simsy-theme;
+    }
+}
+
+.simsy-input-invisible {
+    @extend .simsy-input;
+
+    background: transparent;
+    border-color: transparent;
+    width: 100%;
+}
+
+fieldset.simsy-section {
+    legend {
+        float: none;
+        margin-bottom: 0;
+        width: fit-content;
+        padding-right: 15px;
+    }
+}
