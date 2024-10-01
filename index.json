@@ -9,6 +9,6 @@
     "_links": {
         "repository": "https://github.com/Smoqqqq/simsy-cms-bundle",
         "origin_template": "smoq/simsy-cms-bundle:0.1@github.com/Smoqqqq/simsy-cms-bundle:main",
-        "recipe_template": "https://api.github.com/repos/Smoqqqq/simsy-cms-bundle/contents/simsy-cms-bundle.0.1.json"
+        "recipe_template": "https://api.github.com/repos/Smoqqqq/simsy-cms-bundle/contents/smoq.simsy-cms-bundle.0.1.json"
     }
 }
