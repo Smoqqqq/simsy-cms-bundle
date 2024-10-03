@@ -21,7 +21,8 @@
         "symfony/form": "^7.1",
         "symfony/asset-mapper": "^7.1",
         "symfony/asset": "^7.1",
-        "symfony/twig-pack": "^1.0"
+        "symfony/twig-pack": "^1.0",
+        "symfony/ux-turbo": "^2.20"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.17",

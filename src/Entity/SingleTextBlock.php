@@ -8,10 +8,6 @@ use Smoq\SimsyCMS\Form\SingleTextBlockType;
 #[ORM\Entity]
 class SingleTextBlock extends Block
 {
-    protected string $name = 'Single text block';
-    protected string $description = 'A block with a single text';
-    protected ?string $imageSrc = 'bundles/simsycms/images/blocks/single_text_block.png';
-
     #[ORM\Column(type: 'text')]
     private string $content;
 

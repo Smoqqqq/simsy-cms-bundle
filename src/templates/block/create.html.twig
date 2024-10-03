@@ -1,9 +1,5 @@
-{% extends '@SimsyCMS/layout.html.twig' %}
-
-{% block body %}
-
-    <h1>Add a new block</h1>
-
+<turbo-frame id="section-{{ section.id }}-block-select-frame-{{ blockId }}">
     {% include '@SimsyCMS/block/_form.html.twig' %}
-
-{% endblock %}
+    <a href="{{ path('simsy_cms_block_select', { sectionId: section.id, blockId: blockId }) }}"
+       class="btn btn-secondary close-block-selector-toggle">Cancel</a>
+</turbo-frame>

@@ -10,6 +10,10 @@ services:
             - "../../Resources/"
             - "../../Tests/"
 
-    Smoq\SimsyCMS\EntityTablePrefixer:
+    Smoq\SimsyCMS\Listener\EntityTablePrefixerListener:
         arguments:
             $prefix: 'simsy_cms_'
+
+    Smoq\SimsyCMS\Listener\BlockDiscriminatoryMapListener:
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }

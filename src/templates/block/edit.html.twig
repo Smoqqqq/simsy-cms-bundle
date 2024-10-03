@@ -1,0 +1,5 @@
+<turbo-frame id="section-{{ block.section.id }}-block-show-frame-{{ block.id }}">
+    {% include '@SimsyCMS/block/_form.html.twig' %}
+    <a href="{{ path('simsy_cms_block_show', {id: block.id }) }}"
+       class="btn btn-secondary">Cancel</a>
+</turbo-frame>

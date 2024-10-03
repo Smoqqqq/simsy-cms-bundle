@@ -1,0 +1,17 @@
+<turbo-frame id="section-{{ block.section.id }}-block-show-frame-{{ block.id }}">
+    <turbo-frame id="section-{{ block.section.id }}-block-select-frame-{{ block.id }}"
+                 src="{{ path('simsy_cms_block_select', { sectionId: block.section.id, blockId: block.id }) }}"></turbo-frame>
+
+    <div class="simsy-editor-block">
+        <div class="simsy-editor-block-header">
+            <div class="name">
+                {{ blockConfig.name }} #{{ block.id }}
+            </div>
+            <div class="actions">
+                <a href="{{ path('simsy_cms_block_edit', { id: block.id }) }}" class="text-black text-decoration-none ms-3 action">edit</a>
+                <a href="{{ path('simsy_cms_block_delete', { id: block.id }) }}" class="text-black text-decoration-none ms-1 action" data-turbo-prefetch="false">delete</a>
+            </div>
+        </div>
+        {% include blockConfig.template_path %}
+    </div>
+</turbo-frame>

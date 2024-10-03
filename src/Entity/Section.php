@@ -18,7 +18,7 @@ class Section
     private string $name;
 
     #[ORM\Column(length: 512, nullable: true)]
-    private ?string $description;
+    private ?string $description = null;
 
     /**
      * @var Collection<int, Page>
@@ -29,7 +29,7 @@ class Section
     /**
      * @var Collection<int, Block>
      */
-    #[ORM\OneToMany(targetEntity: Block::class, mappedBy: 'section', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Block::class, mappedBy: 'section', cascade: ['persist', 'remove'])]
     private Collection $blocks;
 
     public function __construct()
@@ -102,7 +102,7 @@ class Section
         return $this->blocks;
     }
 
-    public function addBlock(Block $block): static
+    public function addBlock(BlockInterface $block): static
     {
         if (!$this->blocks->contains($block)) {
             $this->blocks->add($block);
@@ -112,7 +112,7 @@ class Section
         return $this;
     }
 
-    public function removeBlock(Block $block): static
+    public function removeBlock(BlockInterface $block): static
     {
         if ($this->blocks->removeElement($block)) {
             // set the owning side to null (unless already changed)

@@ -1,5 +1,8 @@
+# Extending SimsyCMS
+Simsy CMS has been designed to be easily extendable. You can create custom blocks by following the steps below.
+
 ## Creating a custom block
-1. Create a new entity that extends `Smoq\SimsyCMS\Entity\Block`
+### 1. Create a new entity that extends `Smoq\SimsyCMS\Entity\Block`
 
 ```php
 <?php
@@ -10,14 +13,9 @@ use App\Form\CustomBlockType;
 use Doctrine\ORM\Mapping as ORM;
 use Smoq\SimsyCMS\Entity\Block;
 
+#[ORM\Entity]
 class CustomBlock extends Block
 {
-    protected string $name = 'My custom block';
-    protected string $description = 'A description to help the user understand what this block does';
-    
-    // Optionnally define a path to an image that will be displayed in the block list (will be displayed using twig's asset() function)
-    protected ?string $imageSrc = 'build/images/custom-block.png';
-
     #[ORM\Column(length: 255)]
     private string $content;
 
@@ -35,7 +33,7 @@ class CustomBlock extends Block
 }
 ```
 
-2. Create a new form type
+### 2. Create a new form class
 
 ```php
 <?php
@@ -72,25 +70,37 @@ class CustomBlockType extends AbstractType
 
 ```
 
-3. Define the form type class in your entity
+### 3. Create a new template  
+In your template, you are provided with the `block` variable, which is an instance of your custom block entity.
 
-```php
-class CustomBlock extends Block
-{
-    // The rest of your entity
-
-    public function getFormTypeClass(): string
-    {
-        return CustomBlockType::class;
-    }
-}
+```twig
+{# templates/block_template/custom_block.html.twig #}
+<div class="custom-block">
+    {{ block.content }}
+</div>
 ```
 
-4. Register your custom block in the configuration file
+### 4. Register your custom block in the configuration file  
 
 ```yaml
 # config/packages/simsy_cms.yaml
 simsy_cms:
     custom_blocks:
-        - 'App\Entity\MyCustomBlock'
+        my_custom_block:
+            class: 'App\Entity\CustomBlock'                         # The class of your custom block
+            name: 'Custom Block'                                    # The name of your custom block (displayed in the ui)
+            template_path: 'block_template/custom_block.html.twig'  # The path to the template of your custom block
+            form_class: 'App\Form\CustomBlockType'                  # The form class of your custom block
+            description: 'Custom block description'                 # The description of your custom block (displayed in the ui) [optional]
+            img_src: 'build/images/custom_block.png'                # The path to the image of your custom block (as in used with the asset twig function) [optional]
+```
+
+### 5. Tada  
+That's it! Your block automatically appears in the block list in the admin panel, and you can now freely use it in your pages.
+
+## Troubleshooting
+If you encounter an error related to the Block's discriminatory map, try clearing cache, as it is likely that the discriminator map is not up to date.
+
+```bash
+php bin/console cache:clear
 ```

@@ -1,0 +1,10 @@
+{% if sections is defined %}
+    <p>Subdivide your content into sections to reuse them in other pages.</p>
+
+    <div id="page-section-frame" data-page-id="{{ page.id }}">
+        {% for section in sections %}
+            {% include '@SimsyCMS/section/_show.html.twig' %}
+        {% endfor %}
+    </div>
+    <div class="btn btn-primary float-end mt-3" id="page-section-add">Add section</div>
+{% endif %}

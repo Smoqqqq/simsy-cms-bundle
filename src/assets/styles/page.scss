@@ -1,29 +1,130 @@
 .block-selector {
-    .card {
-        height: 100%;
+    .block-selector-add {
+        position: relative;
+        padding: 15px 0 35px 0;
 
-        .card-body {
+        .block-selector-add-toggle {
+            background: $secondary;
+            padding: 0 10px;
+            border-radius: 4px;
+            width: fit-content;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &::after {
+            width: calc(50% - 70px);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            content: "";
+            border-top: 2px dashed $secondary;
+        }
+
+        &::before {
+            width: calc(50% - 70px);
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            content: "";
+            border-top: 2px dashed $secondary;
+        }
+    }
+
+    .block-selector-blocks {
+        .card {
             height: 100%;
+            transition: box-shadow 0.2s;
 
-            .row {
+            .card-body {
                 height: 100%;
 
-                > div {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
+                .row {
+                    height: 100%;
+
+                    > div {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                }
+
+                .col-md-4 {
+                    display: grid;
+                    place-items: center;
+
+                    img {
+                        width: 90%;
+                        height: 50px;
+                        object-fit: contain;
+                    }
                 }
             }
 
-            .col-md-4 {
-                display: grid;
-                place-items: center;
+            &:hover {
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+}
 
-                img {
-                    width: 90%;
-                    height: 50px;
-                    object-fit: contain;
-                }
+.simsy_cms_section {
+    border: 2px dashed $primary;
+    padding: 0 10px;
+    margin: 20px 0 5px 0;
+
+    .simsy_cms_section_header {
+        .simsy_cms_section_header_form {
+            position: relative;
+
+            .simsy_cms_section_name {
+                position: absolute;
+                left: 5px;
+                top: 5px;
+                background: $primary;
+                padding: 0 8px;
+                white-space: nowrap;
+                cursor: pointer;
+                z-index: 999;
+            }
+
+            .card {
+                position: absolute;
+                left: 5px;
+                top: 35px;
+                width: 400px;
+                z-index: 9999;
+            }
+        }
+    }
+}
+
+.simsy-editor-block {
+    border: 2px dashed $secondary;
+    position: relative;
+    padding-top: 20px;
+
+    .simsy-editor-block-header {
+        position: absolute;
+        left: 5px;
+        top: -17px;
+        background: $secondary;
+        padding: 4px 8px;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+
+        .action {
+            border-radius: 4px;
+            padding: 2px 6px;
+
+            &:hover {
+                background: white;
             }
         }
     }

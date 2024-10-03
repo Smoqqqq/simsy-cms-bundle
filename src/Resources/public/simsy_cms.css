@@ -20072,28 +20072,114 @@ textarea.form-control-lg {
   content: "賈";
 }
 
-.block-selector .card {
+.block-selector .block-selector-add {
+  position: relative;
+  padding: 15px 0 35px 0;
+}
+.block-selector .block-selector-add .block-selector-add-toggle {
+  background: #eaeaea;
+  padding: 0 10px;
+  border-radius: 4px;
+  width: fit-content;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.block-selector .block-selector-add::after {
+  width: calc(50% - 70px);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  content: "";
+  border-top: 2px dashed #eaeaea;
+}
+.block-selector .block-selector-add::before {
+  width: calc(50% - 70px);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  content: "";
+  border-top: 2px dashed #eaeaea;
+}
+.block-selector .block-selector-blocks .card {
+  height: 100%;
+  transition: box-shadow 0.2s;
+}
+.block-selector .block-selector-blocks .card .card-body {
   height: 100%;
 }
-.block-selector .card .card-body {
+.block-selector .block-selector-blocks .card .card-body .row {
   height: 100%;
 }
-.block-selector .card .card-body .row {
-  height: 100%;
-}
-.block-selector .card .card-body .row > div {
+.block-selector .block-selector-blocks .card .card-body .row > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.block-selector .card .card-body .col-md-4 {
+.block-selector .block-selector-blocks .card .card-body .col-md-4 {
   display: grid;
   place-items: center;
 }
-.block-selector .card .card-body .col-md-4 img {
+.block-selector .block-selector-blocks .card .card-body .col-md-4 img {
   width: 90%;
   height: 50px;
   object-fit: contain;
+}
+.block-selector .block-selector-blocks .card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.simsy_cms_section {
+  border: 2px dashed #90caf9;
+  padding: 0 10px;
+  margin: 20px 0 5px 0;
+}
+.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form {
+  position: relative;
+}
+.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_name {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  background: #90caf9;
+  padding: 0 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  z-index: 999;
+}
+.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .card {
+  position: absolute;
+  left: 5px;
+  top: 35px;
+  width: 400px;
+  z-index: 9999;
+}
+
+.simsy-editor-block {
+  border: 2px dashed #eaeaea;
+  position: relative;
+  padding-top: 20px;
+}
+.simsy-editor-block .simsy-editor-block-header {
+  position: absolute;
+  left: 5px;
+  top: -17px;
+  background: #eaeaea;
+  padding: 4px 8px;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+}
+.simsy-editor-block .simsy-editor-block-header .action {
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+.simsy-editor-block .simsy-editor-block-header .action:hover {
+  background: white;
 }
 
 .simsy-input {
@@ -20133,6 +20219,38 @@ fieldset.simsy-section legend {
 .btn.btn-danger:hover {
   background: #ffcdd2;
   border-color: #ffcdd2;
+}
+
+#right-panel-frame {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(500px, 90vw);
+  border-left: 2px solid #eaeaea;
+  background-color: white;
+  z-index: 9999;
+  overflow-y: auto;
+  transition: right 0.2s;
+  padding: 15px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+#right-panel-frame[src=""] {
+  right: calc(max(-500px, -90vw) - 15px);
+}
+#right-panel-frame #right-panel-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+#right-panel-frame #right-panel-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .simsy-section {

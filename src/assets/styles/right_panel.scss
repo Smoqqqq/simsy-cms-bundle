@@ -1,0 +1,37 @@
+$right-panel-width: min(500px, 90vw);
+$right-panel-width-negative: max(-500px, -90vw);
+
+#right-panel-frame {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: $right-panel-width;
+    border-left: 2px solid $secondary;
+    background-color: white;
+    z-index: 9999;
+    overflow-y: auto;
+    transition: right 0.2s;
+    padding: 15px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+
+    &[src=""] {
+        right: calc($right-panel-width-negative - 15px);
+    }
+
+    #right-panel-close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    #right-panel-loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

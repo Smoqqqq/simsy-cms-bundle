@@ -14,10 +14,29 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->getRootNode()
             ->children()
                 ->arrayNode('custom_blocks')
-                    ->scalarPrototype()
+                    ->arrayPrototype()  # Allows defining multiple blocks
+                        ->children()
+                            ->scalarNode('class')
+                                ->isRequired() # Required field
+                                ->cannotBeEmpty() # Cannot be empty
+                            ->end()
+                            ->scalarNode('name')
+                                ->isRequired() # Required field
+                                ->cannotBeEmpty() # Cannot be empty
+                            ->end()
+                                ->scalarNode('description')
+                                ->defaultNull() # Optional field
+                            ->end()
+                                ->scalarNode('form_class')
+                                ->defaultNull() # Optional field
+                            ->end()
+                                ->scalarNode('template_path')
+                                ->cannotBeEmpty() # Cannot be empty
+                                ->end()
+                        ->end()
+                    ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
 
         return $treeBuilder;
     }
