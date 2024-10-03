@@ -1,7 +1,0 @@
-{% for block in section.blocks %}
-    {#<turbo-frame id="section-block-show-frame-{{ block.id }}" src="{{ path('simsy_cms_block_show', { id: block.id }) }}"></turbo-frame>#}
-    {% include '@SimsyCMS/block/_show.html.twig' with { blockConfig: blockService.getBlockConfiguration(block) } %}
-{% endfor %}
-
-{# Allow to add a block at the end #}
-<turbo-frame id="section-{{ section.id }}-block-select-frame-0" src="{{ path('simsy_cms_block_select', { sectionId: section.id }) }}"></turbo-frame>

@@ -7,7 +7,7 @@ window.addEventListener('turbo:load', () => {
         const pageId = sectionFrame.getAttribute('data-page-id');
 
         addBtn.addEventListener('click', () => {
-            rightPanel.setAttribute('src', `/page/${pageId}/section/add`);
+            rightPanel.setAttribute('src', addBtn.getAttribute('data-url').replace('/0/', `/${pageId}/`));
         });
     }
 
@@ -19,7 +19,7 @@ window.addEventListener('turbo:load', () => {
         const pageId = sectionFrame.getAttribute('data-page-id');
 
         editConfigBtn.addEventListener('click', () => {
-            rightPanel.setAttribute('src', `/page/${pageId}/edit/infos`);
+            rightPanel.setAttribute('src', editConfigBtn.getAttribute('data-url').replace('/0/', `/${pageId}/`));
         });
     }
 });

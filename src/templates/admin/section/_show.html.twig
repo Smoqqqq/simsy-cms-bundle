@@ -1,0 +1,14 @@
+<turbo-stream action="append" target="page-section-frame" autoscroll data-autoscroll-block="end">
+    <template>
+        <div class="simsy_cms_section" id="page-section-{{ section.id }}">
+            <div class="simsy_cms_section_header">
+                <turbo-frame class="simsy_cms_section_header_form" id="page-section-header-{{ section.id }}" src="{{ path('simsy_cms_admin_section_edit_header', { pageId: page.id, id: section.id }) }}">
+                    <div class="simsy_cms_section_name" onclick="document.getElementById('page-section-header-{{ section.id }}-form').classList.toggle('d-none')">{{ section.name }} <i class="bi bi-pen"></i></div>
+                </turbo-frame>
+            </div>
+            <div class="simsy_cms_section_content">
+                {% include '@SimsyCMS/admin/section/_content.html.twig' %}
+            </div>
+        </div>
+    </template>
+</turbo-stream>

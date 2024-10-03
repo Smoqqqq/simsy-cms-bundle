@@ -86,7 +86,7 @@
 
 .simsy_cms_section {
     border: 2px dashed $primary;
-    padding: 0 10px;
+    padding: 10px;
     margin: 20px 0 5px 0;
 
     .simsy_cms_section_header {
@@ -95,8 +95,8 @@
 
             .simsy_cms_section_name {
                 position: absolute;
-                left: 5px;
-                top: 5px;
+                left: -5px;
+                top: -5px;
                 background: $primary;
                 padding: 0 8px;
                 white-space: nowrap;
@@ -106,10 +106,14 @@
 
             .card {
                 position: absolute;
-                left: 5px;
-                top: 35px;
+                left: -5px;
+                top: 25px;
                 width: 400px;
                 z-index: 9999;
+
+                .card-body {
+                    padding: 10px;
+                }
             }
         }
     }

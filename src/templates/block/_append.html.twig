@@ -1,9 +1,0 @@
-{% if oldBlock %}
-    {% include '@SimsyCMS/block/_show.html.twig' with { block: oldBlock, blockConfig: oldBlockConfig } %}
-{% endif %}
-
-<turbo-stream action="before" target="{{ oldBlock ? 'section-' ~ oldBlock.section.id ~ '-block-show-frame-' ~ oldBlock.id : 'section-' ~ newBlock.section.id ~ '-block-select-frame-0' }}">
-    <template>
-        {% include '@SimsyCMS/block/_show.html.twig' with { block: newBlock, blockConfig: blockConfig } %}
-    </template>
-</turbo-stream>

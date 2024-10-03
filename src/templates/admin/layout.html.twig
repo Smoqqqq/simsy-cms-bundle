@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|split('_')[0] }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome to Simsy CMS !{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('bundles/simsycms/simsy_cms.css') }}">
+    <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
+    <script src="{{ url('bazinga_jstranslation_js') }}"></script>
+    <script src="{{ asset('bundles/simsycms/simsy_cms.js') }}"></script>
+    <meta name="turbo-refresh-scroll" content="preserve">
+</head>
+<body>
+<div class="d-flex min-height-100vh">
+    {% block sidebar %}
+        {% include '@SimsyCMS/admin/_sidebar.html.twig' %}
+    {% endblock %}
+
+    <div class="container-fluid p-4">
+        <div class="card">
+            <div class="card-body">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include '@SimsyCMS/admin/_right_panel.html.twig' %}
+
+<div id="simsy_cms_flash_container">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert fade show alert-{{ label }} alert-dismissible">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+</body>
+</html>

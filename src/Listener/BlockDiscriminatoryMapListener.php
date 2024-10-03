@@ -28,7 +28,7 @@ class BlockDiscriminatoryMapListener
     {
         $cache = new FilesystemAdapter();
 
-        return $cache->get('simsy_cms_block_discriminatory_map', function () {
+        return $cache->get('simsy_cms_discriminatory_map', function () {
             $discriminatoryMap = [];
             $blocks = $this->blockService->getAvailableBlocks();
 

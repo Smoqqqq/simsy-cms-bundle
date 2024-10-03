@@ -1,0 +1,5 @@
+simsy_cms_public_controllers:
+    resource:
+        path: ../../Controller/Public
+        namespace: Smoq\SimsyCMS\Controller\Public
+    type: attribute

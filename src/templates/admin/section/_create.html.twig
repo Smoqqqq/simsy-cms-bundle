@@ -1,0 +1,14 @@
+<turbo-frame id="right-panel-frame">
+    <h3 class="mb-4">{{ 'simsy_cms.section.add'|trans }}</h3>
+    {% if section is defined and section %}
+        <turbo-stream target="page-section-frame" action="append">
+            <template>
+                {% include '@SimsyCMS/admin/section/_show.html.twig' with { open: true } %}
+            </template>
+        </turbo-stream>
+
+        <div id="close-right-panel"></div>
+    {% endif %}
+
+    {% include '@SimsyCMS/admin/section/_form.html.twig' %}
+</turbo-frame>

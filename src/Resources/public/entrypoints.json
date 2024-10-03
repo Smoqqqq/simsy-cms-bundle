@@ -2,10 +2,10 @@
   "entrypoints": {
     "simsy_cms": {
       "css": [
-        "/bundles/simsy-cms/simsy_cms.css"
+        "/bundles/simsycms/simsy_cms.css"
       ],
       "js": [
-        "/bundles/simsy-cms/simsy_cms.js"
+        "/bundles/simsycms/simsy_cms.js"
       ]
     }
   }

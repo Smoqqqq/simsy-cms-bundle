@@ -1,0 +1,13 @@
+{% extends '@SimsyCMS/admin/layout.html.twig' %}
+
+{% block body %}
+
+    <turbo-frame id="right-panel-frame">
+        {% include '@SimsyCMS/admin/page/_form.html.twig' %}
+
+        {% if app.request.query.get('success') %}
+            <div id="close-right-panel"></div>
+        {% endif %}
+    </turbo-frame>
+
+{% endblock %}

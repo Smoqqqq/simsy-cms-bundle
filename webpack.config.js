@@ -8,8 +8,8 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 Encore
     .setOutputPath('./src/Resources/public/')
-    .setPublicPath('/bundles/simsy-cms/')
-    .setManifestKeyPrefix('bundles/simsy-cms')
+    .setPublicPath('/bundles/simsycms/')
+    .setManifestKeyPrefix('bundles/simsycms')
 
     .addEntry('simsy_cms', './src/assets/js/simsy.ts')
 

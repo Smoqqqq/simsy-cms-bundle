@@ -9758,7 +9758,7 @@ window.addEventListener('turbo:load', function () {
     var sectionFrame = document.getElementById('page-section-frame');
     var pageId = sectionFrame.getAttribute('data-page-id');
     addBtn.addEventListener('click', function () {
-      rightPanel.setAttribute('src', "/page/".concat(pageId, "/section/add"));
+      rightPanel.setAttribute('src', addBtn.getAttribute('data-url').replace('/0/', "/".concat(pageId, "/")));
     });
   }
   var editConfigBtn = document.getElementById('page-configuration-edit');
@@ -9767,7 +9767,7 @@ window.addEventListener('turbo:load', function () {
     var _sectionFrame = document.getElementById('page-section-frame');
     var _pageId = _sectionFrame.getAttribute('data-page-id');
     editConfigBtn.addEventListener('click', function () {
-      _rightPanel.setAttribute('src', "/page/".concat(_pageId, "/edit/infos"));
+      _rightPanel.setAttribute('src', editConfigBtn.getAttribute('data-url').replace('/0/', "/".concat(_pageId, "/")));
     });
   }
 });

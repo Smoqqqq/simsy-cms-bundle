@@ -1,0 +1,12 @@
+<turbo-frame id="page-section-header-{{ section.id }}">
+    <div class="simsy_cms_section_name" onclick="document.getElementById('page-section-header-{{ section.id }}-form').classList.toggle('d-none')">{{ section.name }} <i class="bi bi-pen"></i></div>
+    <div class="card d-none" id="page-section-header-{{ section.id }}-form">
+        <div class="card-body">
+            <div class="d-flex justify-content-end">
+                <div class="btn btn-sm btn-secondary" onclick="document.getElementById('page-section-header-{{ section.id }}-form').classList.add('d-none')">{{ 'simsy_cms.close'|trans }} &times;</div>
+            </div>
+            {% include '@SimsyCMS/admin/section/_form.html.twig' with { btnClass: 'btn-sm' } %}
+            {% include '@SimsyCMS/admin/section/_delete_form.html.twig' %}
+        </div>
+    </div>
+</turbo-frame>

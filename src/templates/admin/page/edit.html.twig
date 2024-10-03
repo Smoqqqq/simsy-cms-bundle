@@ -1,0 +1,13 @@
+{% extends '@SimsyCMS/admin/layout.html.twig' %}
+
+{% block body %}
+
+    <h1>
+        {{ 'simsy_cms.edit'|trans }}
+        <div class="btn btn-secondary float-end mt-3"
+             id="page-configuration-edit" data-url="{{ path('simsy_cms_admin_page_edit_infos', { id: 0 }) }}">{{ 'simsy_cms.page.edit_configuration'|trans }}</div>
+    </h1>
+
+    {% include '@SimsyCMS/admin/page/_edit_body.html.twig' %}
+
+{% endblock %}

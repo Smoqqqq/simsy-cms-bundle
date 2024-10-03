@@ -11855,7 +11855,7 @@ textarea.form-control-lg {
 @font-face {
   font-display: block;
   font-family: "bootstrap-icons";
-  src: url(/bundles/simsy-cms/fonts/bootstrap-icons.b7bcc075.woff2) format("woff2"), url(/bundles/simsy-cms/fonts/bootstrap-icons.39795c0b.woff) format("woff");
+  src: url(/bundles/simsycms/fonts/bootstrap-icons.b7bcc075.woff2) format("woff2"), url(/bundles/simsycms/fonts/bootstrap-icons.39795c0b.woff) format("woff");
 }
 .bi::before,
 [class^=bi-]::before,
@@ -20147,7 +20147,7 @@ textarea.form-control-lg {
 
 .simsy_cms_section {
   border: 2px dashed #90caf9;
-  padding: 0 10px;
+  padding: 10px;
   margin: 20px 0 5px 0;
 }
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form {
@@ -20155,8 +20155,8 @@ textarea.form-control-lg {
 }
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_name {
   position: absolute;
-  left: 5px;
-  top: 5px;
+  left: -5px;
+  top: -5px;
   background: #90caf9;
   padding: 0 8px;
   white-space: nowrap;
@@ -20165,10 +20165,13 @@ textarea.form-control-lg {
 }
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .card {
   position: absolute;
-  left: 5px;
-  top: 35px;
+  left: -5px;
+  top: 25px;
   width: 400px;
   z-index: 9999;
+}
+.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .card .card-body {
+  padding: 10px;
 }
 
 .simsy-editor-block {
@@ -20203,7 +20206,7 @@ textarea.form-control-lg {
 
 .simsy-input {
   width: 100%;
-  padding: 10px;
+  padding: 5px 10px;
   margin: 10px 0;
   border: 2px solid #eaeaea;
   border-radius: 6px;

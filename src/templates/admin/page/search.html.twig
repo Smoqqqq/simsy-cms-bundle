@@ -1,0 +1,32 @@
+{% extends '@SimsyCMS/admin/layout.html.twig' %}
+
+{% block body %}
+
+    <h1>
+        {{ 'simsy_cms.page.all'|trans }}
+        <a href="{{ path('simsy_cms_admin_page_create') }}" class="btn btn-primary float-end">{{ 'simsy_cms.create'|trans }}</a>
+    </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ 'simsy_cms.name'|trans }}</th>
+                <th>{{ 'simsy_cms.description'|trans }}</th>
+                <th class="text-end">{{ 'simsy_cms.actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for page in pages %}
+            <tr>
+                <td>{{ page.name }}</td>
+                <td>{{ page.description }}</td>
+                <td class="d-flex justify-content-end">
+                    <a class="btn btn-sm btn-secondary me-2" href="{{ path('simsy_cms_admin_page_edit', {id: page.id}) }}">{{ 'simsy_cms.edit'|trans }}</a>
+                    {% include '@SimsyCMS/admin/page/_delete_form.html.twig' %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
