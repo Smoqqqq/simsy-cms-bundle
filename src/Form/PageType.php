@@ -37,6 +37,7 @@ class PageType extends AbstractType
             ])
             ->add('url', TextType::class, [
                 'label' => $this->translator->trans('simsy_cms.page.url.label'),
+                'required' => false,
                 'attr' => [
                     'class' => 'simsy-input',
                     'placeholder' => $this->translator->trans('simsy_cms.page.url.placeholder'),

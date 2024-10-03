@@ -5,7 +5,9 @@ namespace Smoq\SimsyCMS\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+#[UniqueEntity(fields: ['url'])]
 #[ORM\Entity]
 class Page
 {
@@ -21,7 +23,7 @@ class Page
     private ?string $description;
 
     #[ORM\Column(length: 512)]
-    private string $url;
+    private ?string $url;
 
     #[ORM\Column(length: 512, nullable: true)]
     private ?string $seoTitle;
@@ -77,9 +79,9 @@ class Page
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
-        $this->url = $url;
+        $this->url = (string) $url;
 
         return $this;
     }

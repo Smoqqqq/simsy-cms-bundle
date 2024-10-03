@@ -2,4 +2,6 @@
 /.guidelines/
 /.idea/
 /node_modules/
-src/Resources/public/fonts/
+src/Resources/public/translations/security
+src/Resources/public/translations/validators
+.development.md
