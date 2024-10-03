@@ -88,11 +88,11 @@ simsy_cms:
     custom_blocks:
         my_custom_block:
             class: 'App\Entity\CustomBlock'                         # The class of your custom block
-            name: 'Custom Block'                                    # The name of your custom block (displayed in the ui)
+            name: 'Custom Block'                                    # The name of your custom block. can be a translation key
+            description: 'Custom block description'                 # [optional] The description of your custom block. can be a translation key
             template_path: 'block_template/custom_block.html.twig'  # The path to the template of your custom block
-            form_class: 'App\Form\CustomBlockType'                  # The form class of your custom block
-            description: 'Custom block description'                 # The description of your custom block (displayed in the ui) [optional]
-            img_src: 'build/images/custom_block.png'                # The path to the image of your custom block (as in used with the asset twig function) [optional]
+            form_class: 'App\Form\CustomBlockType'                  # [optional] The form class of your custom block. If ommited, App\Form\{BlockName}Type will be assumed
+            img_src: 'build/images/custom_block.png'                # [optional] The path to the image of your custom block (as in used with the asset twig function)
 ```
 
 ### 5. Tada  

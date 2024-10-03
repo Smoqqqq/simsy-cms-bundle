@@ -53,6 +53,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/stimulus-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/ux-turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/validator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/willdurand/js-translation-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />

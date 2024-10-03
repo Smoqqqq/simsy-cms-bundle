@@ -1,5 +1,15 @@
-<turbo-frame id="section-{{ section.id }}-block-select-frame-{{ blockId }}">
-    {% include '@SimsyCMS/block/_form.html.twig' %}
-    <a href="{{ path('simsy_cms_block_select', { sectionId: section.id, blockId: blockId }) }}"
-       class="btn btn-secondary close-block-selector-toggle">{{ 'simsy_cms.cancel'|trans }}</a>
+<turbo-frame id="section-{{ section.id }}-block-select-frame-{{ blockId }}" class="block-form-frame">
+    <div class="mt-4 mb-3 p-3 border-dashed-secondary">
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        <div class="d-flex justify-content-between">
+            <a href="{{ path('simsy_cms_block_select', { sectionId: section.id, blockId: blockId }) }}"
+               class="btn btn-secondary close-block-selector-toggle">{{ 'simsy_cms.cancel'|trans }}</a>
+            <button type="submit" class="btn btn-primary"
+                    onclick="this.parentNode.parentNode.querySelector('.close-block-selector-toggle').click()">{{ 'simsy_cms.save'|trans }}</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
 </turbo-frame>

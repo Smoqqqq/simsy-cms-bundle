@@ -1,0 +1,9 @@
+<video
+    src="{{ block.file.path }}"
+    {{ block.autoplay ? 'autoplay' }}
+    {{ block.muted ? 'muted' }}
+    {{ block.loop ? 'loop' }}
+    {{ block.controls ? 'controls' }}
+>
+    {{ 'simsy_cms.errors.video_element_unsupported'|trans }}
+</video>

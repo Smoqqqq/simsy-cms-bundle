@@ -20105,32 +20105,44 @@ textarea.form-control-lg {
   content: "";
   border-top: 2px dashed #eaeaea;
 }
-.block-selector .block-selector-blocks .card {
-  height: 100%;
-  transition: box-shadow 0.2s;
+.block-selector .block-selector-blocks {
+  max-width: 400px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  max-height: 50vh;
+  overflow-y: scroll;
 }
-.block-selector .block-selector-blocks .card .card-body {
-  height: 100%;
+.block-selector .block-selector-blocks > .card .card-body {
+  padding: 10px;
 }
-.block-selector .block-selector-blocks .card .card-body .row {
-  height: 100%;
+.block-selector .block-selector-blocks .block-selector-block {
+  padding: 5px 10px;
+  border: 1px solid #eaeaea;
+  color: black;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+  transition: 0.2s;
 }
-.block-selector .block-selector-blocks .card .card-body .row > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.block-selector .block-selector-blocks .block-selector-block:hover {
+  background: #eaeaea;
 }
-.block-selector .block-selector-blocks .card .card-body .col-md-4 {
-  display: grid;
-  place-items: center;
+.block-selector .block-selector-blocks .block-selector-block:not(:last-child) {
+  margin-bottom: 5px;
 }
-.block-selector .block-selector-blocks .card .card-body .col-md-4 img {
+.block-selector .block-selector-blocks .block-selector-block img {
   width: 90%;
   height: 50px;
   object-fit: contain;
 }
-.block-selector .block-selector-blocks .card:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+.block-selector .block-selector-blocks .block-selector-block .block-name {
+  margin: 0;
+  font-size: 14px;
+}
+.block-selector .block-selector-blocks .block-selector-block .block-description {
+  font-size: 12px;
 }
 
 .simsy_cms_section {
@@ -20160,7 +20172,6 @@ textarea.form-control-lg {
 }
 
 .simsy-editor-block {
-  border: 2px dashed #eaeaea;
   position: relative;
   padding-top: 20px;
 }
@@ -20180,6 +20191,14 @@ textarea.form-control-lg {
 }
 .simsy-editor-block .simsy-editor-block-header .action:hover {
   background: white;
+}
+
+.block-form-frame {
+  margin: 25px 0 35px 0;
+}
+
+.border-dashed-secondary, .simsy-editor-block {
+  border: 2px dashed #eaeaea;
 }
 
 .simsy-input {

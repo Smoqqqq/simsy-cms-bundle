@@ -10,12 +10,25 @@ simsy_cms:
     close: 'Fermer'
     loading: 'Chargement...'
     pages: 'Pages'
+    file: 'Fichier'
 
     block:
         add: 'Ajouter un bloc'
         left_content: 'Contenu de gauche'
         right_content: 'Contenu de droite'
         content: 'Contenu'
+        single_text:
+            name: 'Texte simple'
+            description: 'Un bloc avec un seul champ de texte'
+        dual_text:
+            name: 'Texte double'
+            description: 'Un bloc avec deux champs de texte, côte à côte'
+        single_image:
+            name: 'Image simple'
+            description: 'Un bloc avec une seule image qui occupe toute la largeur du conteneur'
+        single_video:
+            name: 'Vidéo simple'
+            description: 'Un bloc avec une seule vidéo qui occupe toute la largeur du conteneur'
 
     section:
         add: 'Ajouter une section'
@@ -58,3 +71,6 @@ simsy_cms:
     security:
         unauthenticated: 'Non authentifié'
         csrf_error: 'Jeton CSRF invalide'
+
+    errors:
+        video_element_unsupported: "Votre navigateur ne supporte pas l'élément vidéo."

@@ -10,12 +10,25 @@ simsy_cms:
     close: 'Close'
     loading: 'Loading...'
     pages: 'Pages'
+    file: 'File'
 
     block:
         add: 'Add block'
         left_content: 'Left content'
         right_content: 'Right content'
         content: 'Content'
+        single_text:
+            name: 'Single text'
+            description: 'A block with a single text field'
+        dual_text:
+            name: 'Dual text'
+            description: 'A block with two text fields, side by side'
+        single_image:
+            name: 'Single image'
+            description: 'A block with a single image that spends the full width of the container'
+        single_video:
+            name: 'Single video'
+            description: 'A block with a single video that spends the full width of the container'
 
     section:
         add: 'Add section'
@@ -58,3 +71,6 @@ simsy_cms:
     security:
         unauthenticated: 'Not authenticated'
         csrf_error: 'Invalid CSRF token'
+
+    errors:
+        video_element_unsupported: 'Your browser does not support the video element.'

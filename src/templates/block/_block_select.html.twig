@@ -1,35 +1,36 @@
-<turbo-frame id="section-{{ sectionId }}-block-select-frame-{{ blockId }}">
+<turbo-frame id="section-{{ sectionId }}-block-select-frame-{{ blockId }}" class="block-select-frame">
     <div class="block-selector">
         <div class="block-selector-add">
             <div class="block-selector-add-toggle"
-                 onclick="document.getElementById('block-{{ sectionId}}-selector-blocks-{{ blockId }}').classList.remove('d-none')">
+                 onclick="document.getElementById('block-{{ sectionId }}-selector-blocks-{{ blockId }}').classList.remove('d-none')">
                 <i class="bi bi-plus"></i> {{ 'simsy_cms.block.add'|trans }}
             </div>
         </div>
-        <div class="block-selector-blocks d-none" id="block-{{ sectionId}}-selector-blocks-{{ blockId }}">
-            <div class="row">
-                {% for block in blocks %}
-                    <div class="col-xxl-3 col-md-4">
+        <div class="block-selector-blocks d-none" id="block-{{ sectionId }}-selector-blocks-{{ blockId }}">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-end">
+                        <div onclick="document.getElementById('block-{{ sectionId }}-selector-blocks-{{ blockId }}').classList.add('d-none')"
+                             class="btn btn-sm btn-secondary mb-2">{{ 'simsy_cms.close'|trans }} &times;
+                        </div>
+                    </div>
+                    {% for block in blocks %}
                         <a href="{{ path('simsy_cms_block_create', { sectionId: sectionId, blockClass: block.class, blockId: blockId }) }}"
-                           class="card d-block text-decoration-none text-black">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        {% if block.image_src %}<img src="{{ asset(block.image_src) }}"
-                                                                    alt="{{ block.name }}">{% endif %}
+                           class="block-selector-block">
+                            <div class="row">
+                                {% if block.image_src %}
+                                    <div class="col-4">
+                                        <img src="{{ asset(block.image_src) }}" alt="{{ block.name }}">
                                     </div>
-                                    <div class="col-md-8">
-                                        <h6 class="card-title">{{ block.name }}</h6>
-                                        <small class="card-text">{{ block.description }}</small>
-                                    </div>
+                                {% endif %}
+                                <div class="{{ block.image_src ? 'col-8' : 'col-12' }}">
+                                    <p class="block-name">{{ block.name }}</p>
+                                    <small class="block-description">{{ block.description }}</small>
                                 </div>
                             </div>
                         </a>
-                    </div>
-                {% endfor %}
-            </div>
-            <div onclick="document.getElementById('block-{{ sectionId}}-selector-blocks-{{ blockId }}').classList.add('d-none')"
-                 class="btn btn-secondary my-3">{{ 'simsy_cms.cancel'|trans }}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
