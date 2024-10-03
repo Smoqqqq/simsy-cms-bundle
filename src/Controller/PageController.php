@@ -11,10 +11,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/page', name: 'simsy_cms_page_')]
 class PageController extends AbstractController
 {
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+    }
+
     #[Route('/', name: 'search', methods: ['GET'])]
     public function search(PageRepository $pageRepository): Response
     {
@@ -34,7 +39,7 @@ class PageController extends AbstractController
             $em->persist($page);
             $em->flush();
 
-            $this->addFlash('success', 'Page created successfully');
+            $this->addFlash('success', $this->translator->trans('simsy_cms.page.created'));
             return $this->redirectToRoute('simsy_cms_page_edit', ['id' => $page->getId()]);
         }
 
@@ -63,11 +68,11 @@ class PageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
 
-            $this->addFlash('success', 'Page updated successfully');
+            $this->addFlash('success', $this->translator->trans('simsy_cms.page.updated'));
             return $this->redirectToRoute('simsy_cms_page_edit_infos', ['id' => $page->getId(), 'success' => true]);
         }
 
-        return $this->render('@SimsyCMS/page/_form.html.twig', [
+        return $this->render('@SimsyCMS/page/_edit_config.html.twig', [
             'form' => $form,
             'sections' => $page->getSections(),
             'page' => $page,
@@ -82,9 +87,9 @@ class PageController extends AbstractController
             $em->remove($page);
             $em->flush();
 
-            $this->addFlash('success', 'Page deleted successfully');
+            $this->addFlash('success', $this->translator->trans('simsy_cms.page.deleted'));
         } else {
-            $this->addFlash('error', 'Invalid CSRF token, please try again');
+            $this->addFlash('error', $this->translator->trans('simsy_cms.security.csrf_error'));
         }
 
         return $this->redirectToRoute('simsy_cms_page_search');

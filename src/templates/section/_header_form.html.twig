@@ -3,7 +3,7 @@
     <div class="card d-none" id="page-section-header-{{ section.id }}-form">
         <div class="card-body">
             {% include '@SimsyCMS/section/_form.html.twig' %}
-            <div class="btn btn-secondary" onclick="document.getElementById('page-section-header-{{ section.id }}-form').classList.add('d-none')">Close</div>
+            <div class="btn btn-secondary" onclick="document.getElementById('page-section-header-{{ section.id }}-form').classList.add('d-none')">{{ 'simsy_cms.close'|trans }}</div>
             {% include '@SimsyCMS/section/_delete_form.html.twig' %}
         </div>
     </div>

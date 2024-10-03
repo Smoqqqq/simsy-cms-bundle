@@ -3,7 +3,7 @@
         <div class="block-selector-add">
             <div class="block-selector-add-toggle"
                  onclick="document.getElementById('block-{{ sectionId}}-selector-blocks-{{ blockId }}').classList.remove('d-none')">
-                <i class="bi bi-plus"></i> {{ 'block.add'|trans }}
+                <i class="bi bi-plus"></i> {{ 'simsy_cms.block.add'|trans }}
             </div>
         </div>
         <div class="block-selector-blocks d-none" id="block-{{ sectionId}}-selector-blocks-{{ blockId }}">
@@ -29,7 +29,7 @@
                 {% endfor %}
             </div>
             <div onclick="document.getElementById('block-{{ sectionId}}-selector-blocks-{{ blockId }}').classList.add('d-none')"
-                 class="btn btn-secondary my-3">Cancel
+                 class="btn btn-secondary my-3">{{ 'simsy_cms.cancel'|trans }}
             </div>
         </div>
     </div>

@@ -9754,20 +9754,20 @@ function withinMaxClamp(min, value, max) {
 window.addEventListener('turbo:load', function () {
   var addBtn = document.getElementById('page-section-add');
   if (addBtn) {
-    var rightPanel_1 = document.getElementById('right-panel-frame');
+    var rightPanel = document.getElementById('right-panel-frame');
     var sectionFrame = document.getElementById('page-section-frame');
-    var pageId_1 = sectionFrame.getAttribute('data-page-id');
+    var pageId = sectionFrame.getAttribute('data-page-id');
     addBtn.addEventListener('click', function () {
-      rightPanel_1.setAttribute('src', "/page/".concat(pageId_1, "/section/add"));
+      rightPanel.setAttribute('src', "/page/".concat(pageId, "/section/add"));
     });
   }
   var editConfigBtn = document.getElementById('page-configuration-edit');
   if (editConfigBtn) {
-    var rightPanel_2 = document.getElementById('right-panel-frame');
-    var sectionFrame = document.getElementById('page-section-frame');
-    var pageId_2 = sectionFrame.getAttribute('data-page-id');
+    var _rightPanel = document.getElementById('right-panel-frame');
+    var _sectionFrame = document.getElementById('page-section-frame');
+    var _pageId = _sectionFrame.getAttribute('data-page-id');
     editConfigBtn.addEventListener('click', function () {
-      rightPanel_2.setAttribute('src', "/page/".concat(pageId_2, "/edit/infos"));
+      _rightPanel.setAttribute('src', "/page/".concat(_pageId, "/edit/infos"));
     });
   }
 });
@@ -14289,6 +14289,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -14322,19 +14334,19 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-var exports = __webpack_exports__;
 /*!********************************!*\
   !*** ./src/assets/js/simsy.ts ***!
   \********************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _styles_simsy_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/simsy.scss */ "./src/assets/styles/simsy.scss");
+/* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page */ "./src/assets/js/page.ts");
+/* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_page__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hotwired_turbo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @hotwired/turbo */ "./node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js");
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-__webpack_require__(/*! ../styles/simsy.scss */ "./src/assets/styles/simsy.scss");
-__webpack_require__(/*! ./page */ "./src/assets/js/page.ts");
-__webpack_require__(/*! @hotwired/turbo */ "./node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js");
-__webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+
+
 addEventListener('turbo:load', function () {
   handleFrameRendering();
 });
@@ -14360,12 +14372,12 @@ function handleFrameRendering() {
     // the same but by creating the element and adding an event listener
     var closeBtn = document.createElement('div');
     closeBtn.classList.add('btn', 'btn-secondary');
-    closeBtn.textContent = 'Close';
+    closeBtn.textContent = Translator.trans('simsy_cms.close');
     closeBtn.id = 'right-panel-close';
     closeBtn.addEventListener('click', function () {
       baseFrame.setAttribute('src', '');
       setTimeout(function () {
-        baseFrame.innerHTML = '<div id="right-panel-loader">Loading...</div>';
+        baseFrame.innerHTML = '<div id="right-panel-loader">' + Translator.trans('simsy_cms.loading') + '</div>';
       }, 200);
     });
     frame.appendChild(closeBtn);

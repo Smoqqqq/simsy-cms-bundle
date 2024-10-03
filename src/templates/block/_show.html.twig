@@ -8,8 +8,8 @@
                 {{ blockConfig.name }} #{{ block.id }}
             </div>
             <div class="actions">
-                <a href="{{ path('simsy_cms_block_edit', { id: block.id }) }}" class="text-black text-decoration-none ms-3 action">edit</a>
-                <a href="{{ path('simsy_cms_block_delete', { id: block.id }) }}" class="text-black text-decoration-none ms-1 action" data-turbo-prefetch="false">delete</a>
+                <a href="{{ path('simsy_cms_block_edit', { id: block.id }) }}" class="text-black text-decoration-none ms-3 action">{{ 'simsy_cms.edit'|trans }}</a>
+                <a href="{{ path('simsy_cms_block_delete', { id: block.id }) }}" class="text-black text-decoration-none ms-1 action" data-turbo-prefetch="false">{{ 'simsy_cms.delete'|trans }}</a>
             </div>
         </div>
         {% include blockConfig.template_path %}

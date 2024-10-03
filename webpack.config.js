@@ -18,6 +18,7 @@ Encore
     .disableSingleRuntimeChunk()
     .enableSassLoader()
     .enableTypeScriptLoader()
+    .enableForkedTypeScriptTypesChecking()
     .cleanupOutputBeforeBuild()
 
 module.exports = Encore.getWebpackConfig();

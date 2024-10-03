@@ -1,0 +1,60 @@
+simsy_cms:
+    create: 'Create'
+    cancel: 'Cancel'
+    save: 'Save'
+    edit: 'Edit'
+    delete: 'Delete'
+    name: 'Name'
+    description: 'Description'
+    actions: 'Actions'
+    close: 'Close'
+    loading: 'Loading...'
+    pages: 'Pages'
+
+    block:
+        add: 'Add block'
+        left_content: 'Left content'
+        right_content: 'Right content'
+        content: 'Content'
+
+    section:
+        add: 'Add section'
+        hint: 'Subdivide your content into sections to reuse them in other pages.'
+        name:
+            label: 'Section name'
+            placeholder: 'Main content'
+        description:
+            label: 'Section description'
+            placeholder: 'Main content of the page'
+
+    page:
+        edit_configuration: 'Edit configuration'
+        create: 'Add a new page'
+        edit: 'Edit page'
+        all: 'All pages'
+        created: 'Page successfully created'
+        updated: 'Page successfully updated'
+        deleted: 'Page successfully deleted'
+        name:
+            label: 'Page name'
+            placeholder: 'Homepage'
+        description:
+            label: 'Page description'
+            placeholder: 'Website homepage, generates the most traffic'
+        url:
+            label: 'Page URL (including the leading slash)'
+            placeholder: '/homepage'
+        seo:
+            title:
+                label: 'SEO title'
+                placeholder: 'Welcome to my website'
+            description:
+                label: 'SEO description'
+                placeholder: 'On this website, you will find...'
+            keywords:
+                label: 'SEO keywords'
+                placeholder: 'website, content, CMS'
+
+    security:
+        unauthenticated: 'Not authenticated'
+        csrf_error: 'Invalid CSRF token'

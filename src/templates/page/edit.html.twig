@@ -3,8 +3,9 @@
 {% block body %}
 
     <h1>
-        Edit page
-        <div class="btn btn-secondary float-end mt-3" id="page-configuration-edit">Edit configuration</div>
+        {{ 'simsy_cms.edit'|trans }}
+        <div class="btn btn-secondary float-end mt-3"
+             id="page-configuration-edit">{{ 'simsy_cms.page.edit_configuration'|trans }}</div>
     </h1>
 
     {% include '@SimsyCMS/page/_edit_body.html.twig' %}

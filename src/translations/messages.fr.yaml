@@ -1,0 +1,60 @@
+simsy_cms:
+    create: 'Créer'
+    cancel: 'Annuler'
+    save: 'Enregistrer'
+    edit: 'Modifier'
+    delete: 'Supprimer'
+    name: 'Nom'
+    description: 'Description'
+    actions: 'Actions'
+    close: 'Fermer'
+    loading: 'Chargement...'
+    pages: 'Pages'
+
+    block:
+        add: 'Ajouter un bloc'
+        left_content: 'Contenu de gauche'
+        right_content: 'Contenu de droite'
+        content: 'Contenu'
+
+    section:
+        add: 'Ajouter une section'
+        hint: "Divisez votre contenu en sections pour les réutiliser dans d'autres pages."
+        name:
+            label: 'Nom de la section'
+            placeholder: 'Contenu principal'
+        description:
+            label: 'Description de la section'
+            placeholder: 'Contenu principal de la page'
+
+    page:
+        edit_configuration: 'Modifier la configuration'
+        create: 'Ajouter une nouvelle page'
+        edit: 'Modifier la page'
+        all: 'Toutes les pages'
+        created: 'Page créée avec succès'
+        updated: 'Page mise à jour avec succès'
+        deleted: 'Page supprimée avec succès'
+        name:
+            label: 'Nom de la page'
+            placeholder: "Page d'accueil"
+        description:
+            label: 'Description de la page'
+            placeholder: "Page d'accueil du site, génère le plus de traffic"
+        url:
+            label: 'URL de la page (comprenant le premier slash)'
+            placeholder: '/page-accueil'
+        seo:
+            title:
+                label: 'Titre SEO'
+                placeholder: 'Bienvenue sur mon site web'
+            description:
+                label: 'Description SEO'
+                placeholder: 'Sur ce site web, vous trouverez...'
+            keywords:
+                label: 'Mots-clés SEO'
+                placeholder: 'site web, contenu, CMS'
+
+    security:
+        unauthenticated: 'Non authentifié'
+        csrf_error: 'Jeton CSRF invalide'

@@ -9,56 +9,61 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PageType extends AbstractType
 {
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Page Name',
+                'label' => $this->translator->trans('simsy_cms.page.name.label'),
                 'attr' => [
                     'class' => 'simsy-input',
-                    'placeholder' => 'Home page',
+                    'placeholder' => $this->translator->trans('simsy_cms.page.name.placeholder'),
                 ],
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Page Description',
+                'label' => $this->translator->trans('simsy_cms.page.description.label'),
                 'required' => false,
                 'attr' => [
                     'class' => 'simsy-input',
-                    'placeholder' => 'This is the home page',
+                    'placeholder' => $this->translator->trans('simsy_cms.page.description.placeholder'),
                 ],
             ])
             ->add('url', TextType::class, [
-                'label' => 'Page URL (starting with /)',
+                'label' => $this->translator->trans('simsy_cms.page.url.label'),
                 'attr' => [
                     'class' => 'simsy-input',
-                    'placeholder' => 'home',
+                    'placeholder' => $this->translator->trans('simsy_cms.page.url.placeholder'),
                 ],
             ])
             ->add('seoTitle', TextType::class, [
-                'label' => 'SEO Title',
+                'label' => $this->translator->trans('simsy_cms.page.seo.title.label'),
                 'attr' => [
-                    'placeholder' => 'Welcome to my incredible website',
+                    'placeholder' => $this->translator->trans('simsy_cms.page.seo.title.placeholder'),
                     'class' => 'simsy-input',
                 ],
                 'required' => false,
             ])
             ->add('seoDescription', TextType::class, [
-                'label' => 'SEO Description',
+                'label' => $this->translator->trans('simsy_cms.page.seo.description.label'),
                 'attr' => [
-                    'placeholder' => 'Discover the best website in the world, using Simsy CMS',
+                    'placeholder' => $this->translator->trans('simsy_cms.page.seo.description.placeholder'),
                     'class' => 'simsy-input'
                 ],
                 'required' => false,
             ])
             ->add('seoKeywords', TextType::class, [
-                'label' => 'SEO Keywords',
+                'label' => $this->translator->trans('simsy_cms.page.seo.keywords.label'),
                 'required' => false,
                 'attr' => [
                     'class' => 'simsy-input',
-                    'placeholder' => 'website, cms, symfony',
+                    'placeholder' => $this->translator->trans('simsy_cms.page.seo.keywords.placeholder'),
                 ],
             ])
         ;

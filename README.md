@@ -17,15 +17,5 @@ simsy:
     resource: '@SimsyCMS/Resources/config/routes.yaml'
 ```
 
-### Including assets
-To include Simsy's assets in your application, you need to include the following in your base template :
-
-```twig
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/simsy-cms/simsy.css') }}">
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('bundles/simsy-cms/simsy.js') }}"></script>
-{% endblock %}
-```
+## Translations
+Simsy CMS is translated in English and French. I will be more than pleased to have more languages. If you want to contribute, please fell free to open a PR or issue.

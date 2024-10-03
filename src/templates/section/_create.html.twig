@@ -1,5 +1,5 @@
 <turbo-frame id="right-panel-frame">
-    <h3 class="mb-4">Add section</h3>
+    <h3 class="mb-4">{{ 'simsy_cms.section.add'|trans }}</h3>
     {% if section is defined and section %}
         <turbo-stream target="page-section-frame" action="append">
             <template>

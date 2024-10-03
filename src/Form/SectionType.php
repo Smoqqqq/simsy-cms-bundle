@@ -9,25 +9,30 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class SectionType extends AbstractType
 {
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Name',
+                'label' => $this->translator->trans('simsy_cms.section.name.label'),
                 'attr' => [
                     'class' => 'simsy-input',
-                    'placeholder' => 'Home page',
+                    'placeholder' => $this->translator->trans('simsy_cms.section.name.placeholder'),
                 ],
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description',
+                'label' => $this->translator->trans('simsy_cms.section.description.label'),
                 'required' => false,
                 'attr' => [
                     'class' => 'simsy-input',
-                    'placeholder' => 'This is the home page',
+                    'placeholder' => $this->translator->trans('simsy_cms.section.description.placeholder'),
                 ],
             ])
         ;

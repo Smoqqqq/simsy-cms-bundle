@@ -1,21 +1,15 @@
-<turbo-frame id="right-panel-frame">
-    <h3 class="mb-4">Edit page configuration</h3>
-    {{ form_start(form) }}
+<h3 class="mb-4">{{ 'simsy_cms.page.edit_configuration'|trans }}</h3>
+{{ form_start(form) }}
     {{ form_row(form.name) }}
     {{ form_row(form.description) }}
 
-    <fieldset id="google-preview" class="simsy-section">
-        <legend>Seo</legend>
-        {{ form_row(form.seoTitle) }}
-        {{ form_row(form.seoDescription) }}
-        {{ form_row(form.seoKeywords) }}
-        {{ form_row(form.url) }}
-    </fieldset>
+<fieldset id="google-preview" class="simsy-section">
+    <legend>Seo</legend>
+    {{ form_row(form.seoTitle) }}
+    {{ form_row(form.seoDescription) }}
+    {{ form_row(form.seoKeywords) }}
+    {{ form_row(form.url) }}
+</fieldset>
 
-    <button type="submit" class="btn btn-primary float-end">Save</button>
-    {{ form_end(form) }}
-
-    {% if app.request.query.get('success') %}
-        <div id="close-right-panel"></div>
-    {% endif %}
-</turbo-frame>
+<button type="submit" class="btn btn-primary float-end">{{ 'simsy_cms.save'|trans }}</button>
+{{ form_end(form) }}
