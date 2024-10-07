@@ -1,11 +1,19 @@
 {
   "entrypoints": {
-    "simsy_cms": {
+    "simsy_cms_back": {
       "css": [
-        "/bundles/simsycms/simsy_cms.css"
+        "/bundles/simsycms/simsy_cms_back.css"
       ],
       "js": [
-        "/bundles/simsycms/simsy_cms.js"
+        "/bundles/simsycms/simsy_cms_back.js"
+      ]
+    },
+    "simsy_cms_front": {
+      "css": [
+        "/bundles/simsycms/simsy_cms_front.css"
+      ],
+      "js": [
+        "/bundles/simsycms/simsy_cms_front.js"
       ]
     }
   }

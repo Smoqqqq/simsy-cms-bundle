@@ -1,6 +1,8 @@
 {
-  "bundles/simsycms/simsy_cms.css": "/bundles/simsycms/simsy_cms.css",
-  "bundles/simsycms/simsy_cms.js": "/bundles/simsycms/simsy_cms.js",
+  "bundles/simsycms/simsy_cms_back.css": "/bundles/simsycms/simsy_cms_back.css",
+  "bundles/simsycms/simsy_cms_back.js": "/bundles/simsycms/simsy_cms_back.js",
+  "bundles/simsycms/simsy_cms_front.css": "/bundles/simsycms/simsy_cms_front.css",
+  "bundles/simsycms/simsy_cms_front.js": "/bundles/simsycms/simsy_cms_front.js",
   "bundles/simsycms/fonts/bootstrap-icons.woff?": "/bundles/simsycms/fonts/bootstrap-icons.39795c0b.woff",
   "bundles/simsycms/fonts/bootstrap-icons.woff2?": "/bundles/simsycms/fonts/bootstrap-icons.b7bcc075.woff2"
 }

@@ -1,6 +1,8 @@
 <?php
 
-namespace Smoq\SimsyCMS\Entity;
+namespace Smoq\SimsyCMS\Contracts;
+
+use Smoq\SimsyCMS\Entity\Section;
 
 interface BlockInterface
 {

@@ -11,7 +11,8 @@ Encore
     .setPublicPath('/bundles/simsycms/')
     .setManifestKeyPrefix('bundles/simsycms')
 
-    .addEntry('simsy_cms', './src/assets/js/simsy.ts')
+    .addEntry('simsy_cms_back', './src/assets/js/back/simsy.ts')
+    .addEntry('simsy_cms_front', './src/assets/js/front/simsy.ts')
 
     .enableSourceMaps(false)
     .enableVersioning(false)

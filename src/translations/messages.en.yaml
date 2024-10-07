@@ -11,6 +11,7 @@ simsy_cms:
     loading: 'Loading...'
     pages: 'Pages'
     file: 'File'
+    full_edit_mode: 'Full edit mode'
 
     block:
         add: 'Add block'

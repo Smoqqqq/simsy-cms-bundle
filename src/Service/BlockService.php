@@ -2,7 +2,7 @@
 
 namespace Smoq\SimsyCMS\Service;
 
-use Smoq\SimsyCMS\Entity\BlockInterface;
+use Smoq\SimsyCMS\Contracts\BlockInterface;
 use Smoq\SimsyCMS\Entity\DualTextBlock;
 use Smoq\SimsyCMS\Entity\SingleImageBlock;
 use Smoq\SimsyCMS\Entity\SingleTextBlock;
@@ -11,7 +11,6 @@ use Smoq\SimsyCMS\Form\DualTextBlockType;
 use Smoq\SimsyCMS\Form\SingleImageBlockType;
 use Smoq\SimsyCMS\Form\SingleTextBlockType;
 use Smoq\SimsyCMS\Form\SingleVideoBlockType;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\Cache\TagAwareCacheInterface;
@@ -33,6 +32,7 @@ class BlockService
                 'image_src' => 'bundles/simsycms/images/blocks/single_text_block.png',
                 'template_path' => '@SimsyCMS/block_template/single_text_block.html.twig',
                 'form_class' => SingleTextBlockType::class,
+                'type' => 'single_text',
             ],
             DualTextBlock::class => [
                 'class' => DualTextBlock::class,
@@ -41,6 +41,7 @@ class BlockService
                 'image_src' => 'bundles/simsycms/images/blocks/dual_text_block.png',
                 'template_path' => '@SimsyCMS/block_template/dual_text_block.html.twig',
                 'form_class' => DualTextBlockType::class,
+                'type' => 'dual_text',
             ],
             SingleImageBlock::class => [
                 'class' => SingleImageBlock::class,
@@ -49,14 +50,16 @@ class BlockService
                 'image_src' => 'bundles/simsycms/images/blocks/single_image_block.png',
                 'template_path' => '@SimsyCMS/block_template/single_image_block.html.twig',
                 'form_class' => SingleImageBlockType::class,
+                'type' => 'single_image',
             ],
             SingleVideoBlock::class => [
                 'class' => SingleVideoBlock::class,
                 'name' => $this->translator->trans('simsy_cms.block.single_video.name'),
                 'description' => $this->translator->trans('simsy_cms.block.single_video.description'),
-                'image_src' => 'bundles/simsycms/images/blocks/single_image_block.png',
-                'template_path' => '@SimsyCMS/block_template/single_image_block.html.twig',
+                'image_src' => 'bundles/simsycms/images/blocks/single_video_block.png',
+                'template_path' => '@SimsyCMS/block_template/single_video_block.html.twig',
                 'form_class' => SingleVideoBlockType::class,
+                'type' => 'single_video',
             ],
         ];
     }
@@ -98,6 +101,7 @@ class BlockService
                     'image_src' => $block['image_src'] ?? null,
                     'form_class' => $formClass,
                     'template_path' => $block['template_path'],
+                    'type' => $block['type'] ?? $key,
                 ];;
             }
 
@@ -119,5 +123,10 @@ class BlockService
     public function getTemplatePath(BlockInterface $block): string
     {
         return $this->getBlockConfiguration($block)['template_path'];
+    }
+
+    public function getBlockType(BlockInterface $block): string
+    {
+        return $this->getBlockConfiguration($block)['type'];
     }
 }

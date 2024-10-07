@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome to Simsy CMS !{% endblock %}</title>
-    <link rel="stylesheet" href="{{ asset('bundles/simsycms/simsy_cms.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/simsycms/simsy_cms_back.css') }}">
     <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
     <script src="{{ url('bazinga_jstranslation_js') }}"></script>
-    <script src="{{ asset('bundles/simsycms/simsy_cms.js') }}"></script>
+    <script src="{{ asset('bundles/simsycms/simsy_cms_back.js') }}"></script>
     <meta name="turbo-refresh-scroll" content="preserve">
+    <meta name="data-turbo-prefetch" content="false">
 </head>
 <body>
 <div class="d-flex min-height-100vh">

@@ -1,6 +1,6 @@
 declare var Translator; // Define the Translator variable that is included in the layout.html.twig file
 
-import '../styles/simsy.scss';
+import '../../styles/back/simsy.scss';
 
 import './page';
 import '@hotwired/turbo';

@@ -3,7 +3,7 @@
 namespace Smoq\SimsyCMS\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use LogicException;
+use Smoq\SimsyCMS\Contracts\BlockInterface;
 
 #[ORM\Entity]
 #[ORM\InheritanceType('JOINED')]

@@ -5,6 +5,7 @@ namespace Smoq\SimsyCMS\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Smoq\SimsyCMS\Contracts\BlockInterface;
 
 #[ORM\Entity]
 class Section

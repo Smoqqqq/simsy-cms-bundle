@@ -1,4 +1,4 @@
-<turbo-frame id="section-{{ sectionId }}-block-select-frame-{{ blockId }}" class="block-select-frame">
+<turbo-frame id="section-{{ sectionId }}-block-select-frame-{{ blockId }}">
     <div class="block-selector">
         <div class="block-selector-add">
             <div class="block-selector-add-toggle"
@@ -10,8 +10,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-end">
-                        <div onclick="document.getElementById('block-{{ sectionId }}-selector-blocks-{{ blockId }}').classList.add('d-none')"
-                             class="btn btn-sm btn-secondary mb-2">{{ 'simsy_cms.close'|trans }} &times;
+                        <div class="btn btn-sm btn-secondary mb-2 block-selector-add-close">{{ 'simsy_cms.close'|trans }} &times;
                         </div>
                     </div>
                     {% for block in blocks %}

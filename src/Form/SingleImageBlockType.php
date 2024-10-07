@@ -16,7 +16,7 @@ class SingleImageBlockType extends AbstractType
     {
         $builder->add('file', MediaType::class, [
             'label' => false,
-            'constraints' => [new Image()],
+            'file_constraints' => [new Image()],
             'attr' => [
                 'class' => 'simsy-input',
             ]

@@ -3,8 +3,8 @@
 namespace Smoq\SimsyCMS\Controller\Admin;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Smoq\SimsyCMS\Contracts\BlockInterface;
 use Smoq\SimsyCMS\Entity\Block;
-use Smoq\SimsyCMS\Entity\BlockInterface;
 use Smoq\SimsyCMS\Entity\Section;
 use Smoq\SimsyCMS\Repository\BlockRepository;
 use Smoq\SimsyCMS\Service\BlockService;

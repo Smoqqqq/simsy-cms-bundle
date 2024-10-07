@@ -5,6 +5,7 @@ namespace Smoq\SimsyCMS\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
 class SingleVideoBlock extends Block
@@ -15,7 +16,7 @@ class SingleVideoBlock extends Block
     #[ORM\Column]
     private bool $autoplay = false;
 
-    #[ORM\Column]
+    #[ORM\Column(name: '`loop`')]
     private bool $loop = false;
 
     #[ORM\Column]

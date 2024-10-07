@@ -1,6 +1,6 @@
-/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].oneOf[1].use[1]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[4].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].oneOf[1].use[3]!./src/assets/styles/simsy.scss ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].oneOf[1].use[1]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[4].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].oneOf[1].use[3]!./src/assets/styles/back/simsy.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
@@ -20072,9 +20072,13 @@ textarea.form-control-lg {
   content: "賈";
 }
 
+.block-selector {
+  position: relative;
+}
 .block-selector .block-selector-add {
   position: relative;
-  padding: 15px 0 35px 0;
+  padding: 15px 0;
+  overflow: hidden;
 }
 .block-selector .block-selector-add .block-selector-add-toggle {
   background: #eaeaea;
@@ -20082,31 +20086,34 @@ textarea.form-control-lg {
   border-radius: 4px;
   width: fit-content;
   cursor: pointer;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  visibility: hidden;
+  position: relative;
+  transform: translateX(-50%);
 }
-.block-selector .block-selector-add::after {
-  width: calc(50% - 70px);
+.block-selector .block-selector-add .block-selector-add-toggle::after {
+  width: 100vw;
   position: absolute;
-  left: 0;
+  left: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
   content: "";
   border-top: 2px dashed #eaeaea;
 }
-.block-selector .block-selector-add::before {
-  width: calc(50% - 70px);
+.block-selector .block-selector-add .block-selector-add-toggle::before {
+  width: 100vw;
   position: absolute;
-  right: 0;
+  right: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
   content: "";
   border-top: 2px dashed #eaeaea;
+}
+.block-selector .block-selector-add:hover .block-selector-add-toggle, .block-selector .block-selector-add.selecting .block-selector-add-toggle {
+  visibility: visible;
 }
 .block-selector .block-selector-blocks {
   max-width: 400px;
+  width: 400px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -20146,17 +20153,19 @@ textarea.form-control-lg {
 }
 
 .simsy_cms_section {
-  border: 2px dashed #90caf9;
-  padding: 10px;
+  border: 2px dashed transparent;
   margin: 20px 0 5px 0;
 }
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form {
   position: relative;
+  display: none;
 }
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_name {
   position: absolute;
-  left: -5px;
-  top: -5px;
+  left: -2px;
+  top: 0;
+  transform: translateY(-100%);
+  border: 2px solid #90caf9;
   background: #90caf9;
   padding: 0 8px;
   white-space: nowrap;
@@ -20173,6 +20182,12 @@ textarea.form-control-lg {
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .card .card-body {
   padding: 10px;
 }
+.simsy_cms_section:hover {
+  border-color: #90caf9;
+}
+.simsy_cms_section:hover .simsy_cms_section_header_form {
+  display: block;
+}
 
 .simsy-editor-block {
   position: relative;
@@ -20180,16 +20195,18 @@ textarea.form-control-lg {
 }
 .simsy-editor-block .simsy-editor-block-header {
   position: absolute;
-  left: 5px;
-  top: -17px;
+  left: -2px;
+  top: 0;
+  transform: translateY(-100%);
   background: #eaeaea;
-  padding: 4px 8px;
+  border: 2px solid #eaeaea;
+  padding: 2px 1px 2px 4px;
   white-space: nowrap;
   display: flex;
   flex-direction: row;
+  font-size: 14px;
 }
 .simsy-editor-block .simsy-editor-block-header .action {
-  border-radius: 4px;
   padding: 2px 6px;
 }
 .simsy-editor-block .simsy-editor-block-header .action:hover {
@@ -20202,6 +20219,23 @@ textarea.form-control-lg {
 
 .border-dashed-secondary, .simsy-editor-block {
   border: 2px dashed #eaeaea;
+}
+
+#page-section-frame:not(.editing) .simsy-editor-block {
+  padding: 0;
+  margin: 0;
+}
+#page-section-frame:not(.editing) .simsy-editor-block:not(:hover) {
+  border-color: transparent;
+}
+#page-section-frame:not(.editing) .simsy-editor-block:not(:hover) .simsy-editor-block-header {
+  display: none;
+}
+#page-section-frame.editing .simsy_cms_section {
+  border-color: #90caf9;
+}
+#page-section-frame.editing .simsy_cms_section .simsy_cms_section_header_form {
+  display: block;
 }
 
 .simsy-input {

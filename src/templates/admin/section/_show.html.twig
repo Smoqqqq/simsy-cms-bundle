@@ -7,7 +7,12 @@
                 </turbo-frame>
             </div>
             <div class="simsy_cms_section_content">
-                {% include '@SimsyCMS/admin/section/_content.html.twig' %}
+                {% for block in section.blocks %}
+                    {% include '@SimsyCMS/admin/block/_show.html.twig' with { blockConfig: blockService.getBlockConfiguration(block) } %}
+                {% endfor %}
+
+                {# Allow to add a block at the end #}
+                <turbo-frame id="section-{{ section.id }}-block-select-frame-0" src="{{ path('simsy_cms_admin_block_select', { sectionId: section.id }) }}"></turbo-frame>
             </div>
         </div>
     </template>

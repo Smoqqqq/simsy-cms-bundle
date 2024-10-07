@@ -1,0 +1,10 @@
+{% extends '@SimsyCMS/front/layout.html.twig' %}
+
+{% block title %}{{ page.seoTitle }}{% endblock %}
+{% block description %}{{ page.seoDescription }}{% endblock %}
+
+{% block content %}
+    {% for section in page.sections %}
+        {% include '@SimsyCMS/front/render/section.html.twig' %}
+    {% endfor %}
+{% endblock %}

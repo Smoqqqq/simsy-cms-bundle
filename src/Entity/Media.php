@@ -2,7 +2,7 @@
 
 namespace Smoq\SimsyCMS\Entity;
 
-use Doctrine\ORM\Event\PreRemoveEventArgs;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -20,13 +20,13 @@ class Media
     private ?File $file = null;
 
     #[ORM\Column(length: 255)]
-    private string $path;
+    private ?string $filename = null;
 
     #[ORM\Column(length: 255)]
-    private int $size;
+    private ?int $size = null;
 
     #[ORM\Column(type: 'datetime')]
-    private \DateTime $updatedAt;
+    private ?DateTime $updatedAt;
 
     public function getId(): int
     {
@@ -40,36 +40,27 @@ class Media
 
     public function setFile(File|UploadedFile $file): self
     {
-        if ($this->getFile() instanceof File) {
-            unlink($this->path);
-        }
-
         $this->file = $file;
-        $this->updatedAt = new \DateTime();
 
-        $filename = uniqid() .'-'. $file->getClientOriginalName();
-        $path = self::FILE_PATH_PREFIX . $filename;
-
-        $this->setSize($file->getSize());
-        $file->move(self::FILE_PATH_PREFIX, $filename);
-        $this->setPath($path);
+        // Have to update at least one mapped field to trigger the lifecycle events (preUpdate / prePersist)
+        $this->setUpdatedAt(new DateTime());
 
         return $this;
     }
 
+    public function getFilename(): string
+    {
+        return $this->filename;
+    }
+
     public function getPath(): string
     {
-        return '/'.$this->path;
+        return self::FILE_PATH_PREFIX.$this->filename;
     }
 
-    public function getRealPath(): string
+    public function setFilename(string $filename): self
     {
-        return $this->path;
-    }
-
-    public function setPath(string $path): self
-    {
-        $this->path = $path;
+        $this->filename = $filename;
 
         return $this;
     }
@@ -86,8 +77,15 @@ class Media
         return $this;
     }
 
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): DateTime
     {
         return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(DateTime $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

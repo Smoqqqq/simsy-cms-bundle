@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|split('_')[0] }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome to Simsy CMS !{% endblock %}</title>
+    <meta name="description" content="{% block description %}Simsy CMS{% endblock %}">
+    <link rel="stylesheet" href="{{ asset('bundles/simsycms/simsy_cms_front.css') }}">
+    <script src="{{ asset('bundles/simsycms/simsy_cms_front.js') }}"></script>
+</head>
+<body>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

@@ -9745,10 +9745,10 @@ function withinMaxClamp(min, value, max) {
 
 /***/ }),
 
-/***/ "./src/assets/js/page.ts":
-/*!*******************************!*\
-  !*** ./src/assets/js/page.ts ***!
-  \*******************************/
+/***/ "./src/assets/js/back/page.ts":
+/*!************************************!*\
+  !*** ./src/assets/js/back/page.ts ***!
+  \************************************/
 /***/ (() => {
 
 window.addEventListener('turbo:load', function () {
@@ -9770,6 +9770,41 @@ window.addEventListener('turbo:load', function () {
       _rightPanel.setAttribute('src', editConfigBtn.getAttribute('data-url').replace('/0/', "/".concat(_pageId, "/")));
     });
   }
+  addEventListener('turbo:frame-render', function (e) {
+    var frame = e.target;
+    var blockSelectorContainers = frame.querySelectorAll('.block-selector');
+    blockSelectorContainers.forEach(function (container) {
+      var addBtnContainer = container.querySelector('.block-selector-add');
+      var addBtn = addBtnContainer.querySelector('.block-selector-add-toggle');
+      var closeToggle = container.querySelector('.block-selector-add-close');
+      var blockSelectorBlocks = container.querySelector('.block-selector-blocks');
+      closeToggle.addEventListener('click', function () {
+        addBtnContainer.classList.remove('selecting');
+        blockSelectorBlocks.classList.add('d-none');
+      });
+      addBtn.addEventListener('click', function () {
+        addBtnContainer.classList.add('selecting');
+        var selectorLeft = Number(getComputedStyle(addBtn).left.replace('px', ''));
+        if (selectorLeft < blockSelectorBlocks.getBoundingClientRect().width / 2) {
+          selectorLeft = blockSelectorBlocks.getBoundingClientRect().width / 2;
+        } else if (selectorLeft > addBtnContainer.getBoundingClientRect().width - blockSelectorBlocks.getBoundingClientRect().width / 2) {
+          selectorLeft = addBtnContainer.getBoundingClientRect().width - blockSelectorBlocks.getBoundingClientRect().width / 2;
+        }
+        blockSelectorBlocks.style.left = "".concat(selectorLeft, "px");
+      });
+      addBtnContainer.addEventListener('mousemove', function (e) {
+        if (!addBtnContainer.classList.contains('selecting')) {
+          var left = e.clientX - addBtnContainer.getBoundingClientRect().left;
+          if (left < addBtn.getBoundingClientRect().width / 2) {
+            left = addBtn.getBoundingClientRect().width / 2;
+          } else if (left > addBtnContainer.getBoundingClientRect().width - addBtn.getBoundingClientRect().width / 2) {
+            left = addBtnContainer.getBoundingClientRect().width - addBtn.getBoundingClientRect().width / 2;
+          }
+          addBtn.style.left = "".concat(left, "px");
+        }
+      });
+    });
+  });
 });
 
 /***/ }),
@@ -14249,10 +14284,10 @@ defineJQueryPlugin(Toast);
 
 /***/ }),
 
-/***/ "./src/assets/styles/simsy.scss":
-/*!**************************************!*\
-  !*** ./src/assets/styles/simsy.scss ***!
-  \**************************************/
+/***/ "./src/assets/styles/back/simsy.scss":
+/*!*******************************************!*\
+  !*** ./src/assets/styles/back/simsy.scss ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -14334,12 +14369,12 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!********************************!*\
-  !*** ./src/assets/js/simsy.ts ***!
-  \********************************/
+/*!*************************************!*\
+  !*** ./src/assets/js/back/simsy.ts ***!
+  \*************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _styles_simsy_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/simsy.scss */ "./src/assets/styles/simsy.scss");
-/* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page */ "./src/assets/js/page.ts");
+/* harmony import */ var _styles_back_simsy_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../styles/back/simsy.scss */ "./src/assets/styles/back/simsy.scss");
+/* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page */ "./src/assets/js/back/page.ts");
 /* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_page__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _hotwired_turbo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @hotwired/turbo */ "./node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
