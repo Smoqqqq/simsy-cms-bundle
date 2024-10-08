@@ -72,5 +72,33 @@ window.addEventListener('turbo:load', () => {
                 editBtn.click();
             })
         })
+
+        const sectionCollapseToggles: NodeListOf<HTMLDivElement> = frame.querySelectorAll('.section-collapse-toggle');
+        sectionCollapseToggles.forEach(toggle => {
+            const section = toggle.closest('.simsy_cms_section') as HTMLDivElement;
+            const sectionContent = section.querySelector('.simsy_cms_section_content') as HTMLDivElement;
+            const sectionCollapseIcon = toggle.querySelector('.bi') as HTMLDivElement;
+            sectionCollapseIcon.classList.toggle('bi-arrows-collapse', !sectionContent.classList.contains('d-none'));
+            sectionCollapseIcon.classList.toggle('bi-arrows-expand', sectionContent.classList.contains('d-none'));
+
+            toggle.removeEventListener('click', () => {
+                handleSectionCollapse(toggle);
+            });
+            toggle.addEventListener('click', () => {
+                handleSectionCollapse(toggle);
+            });
+        });
     });
 });
+
+function handleSectionCollapse(toggle: HTMLDivElement) {
+    const section = toggle.closest('.simsy_cms_section') as HTMLDivElement;
+    const sectionContent = section.querySelector('.simsy_cms_section_content') as HTMLDivElement;
+    const sectionCollapseIcon = toggle.querySelector('.bi') as HTMLDivElement;
+
+    console.log(section, sectionContent, sectionCollapseIcon);
+
+    sectionContent.classList.toggle('d-none');
+    sectionCollapseIcon.classList.toggle('bi-arrows-collapse', !sectionContent.classList.contains('d-none'));
+    sectionCollapseIcon.classList.toggle('bi-arrows-expand', sectionContent.classList.contains('d-none'));
+}

@@ -55,6 +55,7 @@ simsy_cms:
         created: 'Page successfully created'
         updated: 'Page successfully updated'
         deleted: 'Page successfully deleted'
+        collapse_sections: 'Collapse sections'
         name:
             label: 'Page name'
             placeholder: 'Homepage'

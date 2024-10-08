@@ -55,6 +55,7 @@ simsy_cms:
         created: 'Page créée avec succès'
         updated: 'Page mise à jour avec succès'
         deleted: 'Page supprimée avec succès'
+        collapse_sections: "Réduire les sections"
         name:
             label: 'Nom de la page'
             placeholder: "Page d'accueil"

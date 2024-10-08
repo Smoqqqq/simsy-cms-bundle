@@ -20196,9 +20196,16 @@ textarea.form-control-lg {
   flex-direction: row;
   align-items: center;
 }
-.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_actions .name {
-  height: fit-content;
+.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_actions .section-collapse-toggle {
   margin-right: 10px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_actions .section-collapse-toggle .name {
+  height: fit-content;
+  margin-left: 10px;
   font-size: 14px;
 }
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .card {
@@ -20398,8 +20405,8 @@ fieldset.simsy-section legend {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.min-height-100vh {
-  min-height: 100vh;
+.height-100vh {
+  height: 100vh;
 }
 
 #simsy_cms_flash_container {

@@ -9907,8 +9907,31 @@ window.addEventListener('turbo:load', function () {
         editBtn.click();
       });
     });
+    var sectionCollapseToggles = frame.querySelectorAll('.section-collapse-toggle');
+    sectionCollapseToggles.forEach(function (toggle) {
+      var section = toggle.closest('.simsy_cms_section');
+      var sectionContent = section.querySelector('.simsy_cms_section_content');
+      var sectionCollapseIcon = toggle.querySelector('.bi');
+      sectionCollapseIcon.classList.toggle('bi-arrows-collapse', !sectionContent.classList.contains('d-none'));
+      sectionCollapseIcon.classList.toggle('bi-arrows-expand', sectionContent.classList.contains('d-none'));
+      toggle.removeEventListener('click', function () {
+        handleSectionCollapse(toggle);
+      });
+      toggle.addEventListener('click', function () {
+        handleSectionCollapse(toggle);
+      });
+    });
   });
 });
+function handleSectionCollapse(toggle) {
+  var section = toggle.closest('.simsy_cms_section');
+  var sectionContent = section.querySelector('.simsy_cms_section_content');
+  var sectionCollapseIcon = toggle.querySelector('.bi');
+  console.log(section, sectionContent, sectionCollapseIcon);
+  sectionContent.classList.toggle('d-none');
+  sectionCollapseIcon.classList.toggle('bi-arrows-collapse', !sectionContent.classList.contains('d-none'));
+  sectionCollapseIcon.classList.toggle('bi-arrows-expand', sectionContent.classList.contains('d-none'));
+}
 
 /***/ }),
 

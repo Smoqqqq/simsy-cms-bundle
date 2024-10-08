@@ -119,10 +119,18 @@
                 flex-direction: row;
                 align-items: center;
 
-                .name {
-                    height: fit-content;
+                .section-collapse-toggle {
                     margin-right: 10px;
-                    font-size: 14px;
+                    font-size: 20px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    .name {
+                        height: fit-content;
+                        margin-left: 10px;
+                        font-size: 14px;
+                    }
                 }
             }
 

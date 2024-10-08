@@ -1,7 +1,10 @@
 <turbo-frame id="page-section-header-{{ section.id }}">
     <div class="simsy_cms_section_actions">
-        <div class="name">
-            {{ section.name }} #{{ section.id }}
+        <div class="section-collapse-toggle">
+            <i class="bi bi-arrows-collapse"></i>
+            <div class="name">
+                {{ section.name }} #{{ section.id }}
+            </div>
         </div>
         <div class="btn btn-sm btn-secondary"
              onclick="document.getElementById('page-section-header-{{ section.id }}-form').classList.toggle('d-none')">{{ 'simsy_cms.edit'|trans }}

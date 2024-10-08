@@ -10,7 +10,7 @@
 
 <div class='d-flex justify-content-between mt-3'>
 <button onclick='document.getElementById(`section-{{ section.id }}-delete`).click();' class='btn btn-sm btn-secondary'>{{ 'simsy_cms.cancel'|trans }} <i class='bi bi-x'></i></button>
-<button onclick='document.getElementById(`section-{{ section.id }}-save`).click();; document.getElementById(`section-{{ section.id }}-save`).click();' class='btn btn-sm btn-danger'>{{ 'simsy_cms.delete'|trans }} <i class='bi bi-trash'></i></button>
+<button onclick='document.getElementById(`section-{{ section.id }}-delete`).click(); document.getElementById(`section-{{ section.id }}-save`).click();' class='btn btn-sm btn-danger'>{{ 'simsy_cms.delete'|trans }} <i class='bi bi-trash'></i></button>
 </div>
 " data-bs-placement="top" data-html="true" data-sanitize="false">
         {{ 'simsy_cms.delete'|trans }} <i class="bi bi-trash"></i>
