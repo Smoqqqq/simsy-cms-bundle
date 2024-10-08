@@ -11,7 +11,7 @@ simsy_cms:
     loading: 'Chargement...'
     pages: 'Pages'
     file: 'Fichier'
-    full_edit_mode: 'Mode édition complet'
+    block_borders: 'Toujours afficher les bordures des blocks'
     confirm_action: "Confirmer l'action"
     delete_section_modal: 'Êtes-vous sûr de vouloir supprimer cette section ? Cette action est irréversible. Tous les blocs de la section seront supprimés.'
     delete_block_modal: 'Êtes-vous sûr de vouloir supprimer ce bloc ? Cette action est irréversible.'
