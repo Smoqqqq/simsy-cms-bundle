@@ -23,7 +23,9 @@ class MediaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('file', FileType::class, [
-            'label' => $this->translator->trans('simsy_cms.file'),
+            'attr' => [
+                'placeholder' => $this->translator->trans('simsy_cms.file'),
+            ],
             'constraints' => $options['file_constraints'],
         ]);
     }

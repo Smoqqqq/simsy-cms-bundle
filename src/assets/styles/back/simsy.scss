@@ -31,3 +31,12 @@
     top: 15px;
     z-index: 9999;
 }
+
+.popover-danger {
+    border-color: $danger;
+
+    .popover-header {
+        background: $danger;
+        border-color: $danger;
+    }
+}

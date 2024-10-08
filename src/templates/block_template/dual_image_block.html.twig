@@ -1,0 +1,16 @@
+<div class="row {{ form is defined ? 'mx-0 px-0' }}">
+    <div class="col-md-6 {{ form is defined ? 'ps-0' }}">
+        {% if form is defined and form %}
+            {{ form_row(form.leftImage) }}
+        {% else %}
+            <img src="/{{ block.leftImage.path }}" class="w-100">
+        {% endif %}
+    </div>
+    <div class="col-md-6 {{ form is defined ? 'pe-0' }}">
+        {% if form is defined and form %}
+            {{ form_row(form.rightImage) }}
+        {% else %}
+            <img src="/{{ block.rightImage.path }}" class="w-100">
+        {% endif %}
+    </div>
+</div>

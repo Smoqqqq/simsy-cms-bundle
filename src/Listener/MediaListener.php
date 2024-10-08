@@ -50,8 +50,11 @@ class MediaListener
 
         $media->setSize($file->getSize());
         $media->setFilename($filename);
-
         $media->setUpdatedAt(new DateTime());
-        $media->setFile($file->move(Media::FILE_PATH_PREFIX, $media->getFileName()));
+
+        // The file needs to be moved after the form is submitted and before the entity is saved
+        // Otherwise the form validation will fail as the field must be an instance of UploadedFile
+        $file = $file->move(Media::FILE_PATH_PREFIX, $media->getFileName());
+        $media->setFile($file);
     }
 }

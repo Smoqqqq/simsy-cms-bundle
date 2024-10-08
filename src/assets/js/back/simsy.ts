@@ -3,12 +3,16 @@ declare var Translator; // Define the Translator variable that is included in th
 import '../../styles/back/simsy.scss';
 
 import './page';
+import './block-drag';
 import '@hotwired/turbo';
 import 'bootstrap';
 import {TurboBeforeFrameRenderEvent, TurboFrameRenderEvent} from "@hotwired/turbo";
+import * as bootstrap from 'bootstrap';
 
 addEventListener('turbo:load', () => {
     handleFrameRendering();
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 });
 
 function handleFrameRendering() {
@@ -28,6 +32,32 @@ function handleFrameRendering() {
     })
 
     addEventListener("turbo:frame-render", (event: TurboFrameRenderEvent) => {
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => {
+            let config = {};
+
+            if (popoverTriggerEl.getAttribute('data-sanitize') === 'false') {
+                config = {
+                    sanitize: false,
+                    html: true,
+                    container: document.querySelector(popoverTriggerEl.getAttribute('data-container')) || 'body'
+                };
+            }
+
+            popoverTriggerEl.addEventListener('click', (e) => {
+                const target = e.target as HTMLDivElement;
+                const parent = target.parentNode as HTMLElement;
+
+                if (parent.querySelector('.popover.show')?.classList.contains('show')) {
+                    popoverTriggerEl.closest('.simsy-editor-block')?.classList.remove('edit');
+                } else {
+                    popoverTriggerEl.closest('.simsy-editor-block')?.classList.add('edit');
+                }
+            })
+
+            return new bootstrap.Popover(popoverTriggerEl, config)
+        })
+
         const frame: HTMLDivElement = event.target as HTMLDivElement;
         const baseFrame = document.getElementById('right-panel-frame');
 

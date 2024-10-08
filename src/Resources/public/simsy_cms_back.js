@@ -9745,6 +9745,104 @@ function withinMaxClamp(min, value, max) {
 
 /***/ }),
 
+/***/ "./src/assets/js/back/block-drag.ts":
+/*!******************************************!*\
+  !*** ./src/assets/js/back/block-drag.ts ***!
+  \******************************************/
+/***/ (() => {
+
+addEventListener('turbo:load', function () {
+  initializeDragAndDrop();
+});
+addEventListener('turbo:frame-render', function () {
+  initializeDragAndDrop();
+});
+function handleDragStart(event) {
+  var target = event.target;
+  target = target.closest('.simsy_cms_editor_block');
+  if (target) {
+    var _event$dataTransfer, _event$dataTransfer2, _target$closest;
+    // Store the block id in dataTransfer to access it during drop
+    (_event$dataTransfer = event.dataTransfer) === null || _event$dataTransfer === void 0 || _event$dataTransfer.setData('blockId', target.dataset.blockId || '');
+    // Store the originating section id to reference later
+    (_event$dataTransfer2 = event.dataTransfer) === null || _event$dataTransfer2 === void 0 || _event$dataTransfer2.setData('sectionId', ((_target$closest = target.closest('.simsy_cms_section_content')) === null || _target$closest === void 0 ? void 0 : _target$closest.id) || '');
+    // Add a class to highlight the element being dragged
+    target.classList.add('dragging');
+  }
+}
+function handleDragOver(event) {
+  event.preventDefault(); // Necessary to allow drop
+  var target = event.target;
+  if (target !== null && target !== void 0 && target.classList.contains('block-selector-add')) {
+    target.classList.add('drag-over');
+  }
+}
+function handleDragLeave(event) {
+  var target = event.target;
+  target = target.closest('.block-selector-add');
+  if (target) {
+    target.classList.remove('drag-over');
+  }
+}
+function handleDrop(event) {
+  var _event$dataTransfer3;
+  event.preventDefault();
+  var target = event.target;
+  target = target.closest('.simsy_cms_editor_block');
+  var draggedBlockId = ((_event$dataTransfer3 = event.dataTransfer) === null || _event$dataTransfer3 === void 0 ? void 0 : _event$dataTransfer3.getData('blockId')) || '';
+  // Locate the dragged block and the drop target
+  var draggedBlock = document.querySelector("[data-block-id=\"".concat(draggedBlockId, "\"]"));
+  var targetSection = target.closest('.simsy_cms_section_content');
+  if (target && draggedBlock && targetSection) {
+    target.classList.remove('drag-over');
+    // Reposition the dragged block within the new section
+    targetSection.insertBefore(draggedBlock, target);
+    var blocks = [];
+    // Get the new order of the blocks
+    targetSection.querySelectorAll('.simsy_cms_editor_block').forEach(function (block, index) {
+      if (block.getAttribute('data-block-id')) {
+        blocks[index] = {
+          id: block.getAttribute('data-block-id'),
+          sectionId: targetSection.getAttribute('data-section-id')
+        };
+      }
+    });
+    fetch(targetSection.getAttribute('data-order-url'), {
+      method: 'POST',
+      body: JSON.stringify({
+        blocks: blocks
+      })
+    });
+  }
+}
+function handleDragEnd(event) {
+  var target = event.target;
+  target = target.closest('.simsy_cms_editor_block');
+  if (target) {
+    target.classList.remove('dragging');
+  }
+  // Remove any drag-over classes
+  var allBlocks = document.querySelectorAll('.block-selector-add');
+  allBlocks.forEach(function (block) {
+    return block.classList.remove('drag-over');
+  });
+}
+function initializeDragAndDrop() {
+  var sections = document.querySelectorAll('.simsy_cms_section_content');
+  sections.forEach(function (section) {
+    var blocks = section.querySelectorAll('.simsy_cms_editor_block');
+    blocks.forEach(function (block) {
+      block.addEventListener('dragstart', handleDragStart);
+      block.addEventListener('dragover', handleDragOver);
+      block.addEventListener('dragleave', handleDragLeave);
+      block.addEventListener('drop', handleDrop);
+      block.addEventListener('dragend', handleDragEnd);
+    });
+  });
+}
+
+/***/ }),
+
 /***/ "./src/assets/js/back/page.ts":
 /*!************************************!*\
   !*** ./src/assets/js/back/page.ts ***!
@@ -9758,16 +9856,14 @@ window.addEventListener('turbo:load', function () {
     var sectionFrame = document.getElementById('page-section-frame');
     var pageId = sectionFrame.getAttribute('data-page-id');
     addBtn.addEventListener('click', function () {
-      rightPanel.setAttribute('src', addBtn.getAttribute('data-url').replace('/0/', "/".concat(pageId, "/")));
+      rightPanel.setAttribute('src', addBtn.getAttribute('data-url'));
     });
   }
   var editConfigBtn = document.getElementById('page-configuration-edit');
   if (editConfigBtn) {
     var _rightPanel = document.getElementById('right-panel-frame');
-    var _sectionFrame = document.getElementById('page-section-frame');
-    var _pageId = _sectionFrame.getAttribute('data-page-id');
     editConfigBtn.addEventListener('click', function () {
-      _rightPanel.setAttribute('src', editConfigBtn.getAttribute('data-url').replace('/0/', "/".concat(_pageId, "/")));
+      _rightPanel.setAttribute('src', editConfigBtn.getAttribute('data-url'));
     });
   }
   addEventListener('turbo:frame-render', function (e) {
@@ -9802,6 +9898,13 @@ window.addEventListener('turbo:load', function () {
           }
           addBtn.style.left = "".concat(left, "px");
         }
+      });
+    });
+    var blockViews = document.querySelectorAll('.simsy_cms_block_view');
+    blockViews.forEach(function (view) {
+      var editBtn = view.parentNode.querySelector('.simsy_cms_block_edit_btn');
+      view.addEventListener('dblclick', function () {
+        editBtn.click();
       });
     });
   });
@@ -14376,14 +14479,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_back_simsy_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../styles/back/simsy.scss */ "./src/assets/styles/back/simsy.scss");
 /* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page */ "./src/assets/js/back/page.ts");
 /* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_page__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _hotwired_turbo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @hotwired/turbo */ "./node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js");
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var _block_drag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block-drag */ "./src/assets/js/back/block-drag.ts");
+/* harmony import */ var _block_drag__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_block_drag__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _hotwired_turbo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @hotwired/turbo */ "./node_modules/@hotwired/turbo/dist/turbo.es2017-esm.js");
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+
+
 
 
 
 
 addEventListener('turbo:load', function () {
   handleFrameRendering();
+  var popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+  var popoverList = _toConsumableArray(popoverTriggerList).map(function (popoverTriggerEl) {
+    return new bootstrap__WEBPACK_IMPORTED_MODULE_4__.Popover(popoverTriggerEl);
+  });
 });
 function handleFrameRendering() {
   addEventListener('turbo:before-frame-render', function (e) {
@@ -14399,6 +14516,30 @@ function handleFrameRendering() {
     }
   });
   addEventListener("turbo:frame-render", function (event) {
+    var popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    var popoverList = _toConsumableArray(popoverTriggerList).map(function (popoverTriggerEl) {
+      var config = {};
+      if (popoverTriggerEl.getAttribute('data-sanitize') === 'false') {
+        config = {
+          sanitize: false,
+          html: true,
+          container: document.querySelector(popoverTriggerEl.getAttribute('data-container')) || 'body'
+        };
+      }
+      popoverTriggerEl.addEventListener('click', function (e) {
+        var _parent$querySelector;
+        var target = e.target;
+        var parent = target.parentNode;
+        if ((_parent$querySelector = parent.querySelector('.popover.show')) !== null && _parent$querySelector !== void 0 && _parent$querySelector.classList.contains('show')) {
+          var _popoverTriggerEl$clo;
+          (_popoverTriggerEl$clo = popoverTriggerEl.closest('.simsy-editor-block')) === null || _popoverTriggerEl$clo === void 0 || _popoverTriggerEl$clo.classList.remove('edit');
+        } else {
+          var _popoverTriggerEl$clo2;
+          (_popoverTriggerEl$clo2 = popoverTriggerEl.closest('.simsy-editor-block')) === null || _popoverTriggerEl$clo2 === void 0 || _popoverTriggerEl$clo2.classList.add('edit');
+        }
+      });
+      return new bootstrap__WEBPACK_IMPORTED_MODULE_4__.Popover(popoverTriggerEl, config);
+    });
     var frame = event.target;
     var baseFrame = document.getElementById('right-panel-frame');
     if (frame.id !== 'right-panel-frame') {

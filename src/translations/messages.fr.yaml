@@ -12,6 +12,9 @@ simsy_cms:
     pages: 'Pages'
     file: 'Fichier'
     full_edit_mode: 'Mode édition complet'
+    confirm_action: "Confirmer l'action"
+    delete_section_modal: 'Êtes-vous sûr de vouloir supprimer cette section ? Cette action est irréversible. Tous les blocs de la section seront supprimés.'
+    delete_block_modal: 'Êtes-vous sûr de vouloir supprimer ce bloc ? Cette action est irréversible.'
 
     block:
         add: 'Ajouter un bloc'
@@ -27,6 +30,9 @@ simsy_cms:
         single_image:
             name: 'Image simple'
             description: 'Un bloc avec une seule image qui occupe toute la largeur du conteneur'
+        dual_image:
+            name: 'Image double'
+            description: 'Un bloc avec deux images, côte à côte'
         single_video:
             name: 'Vidéo simple'
             description: 'Un bloc avec une seule vidéo qui occupe toute la largeur du conteneur'

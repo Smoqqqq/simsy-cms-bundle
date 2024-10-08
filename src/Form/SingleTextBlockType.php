@@ -22,12 +22,12 @@ class SingleTextBlockType extends AbstractType
     {
         $builder
             ->add('content', TextType::class, [
-                'label' => $this->translator->trans('simsy_cms.block.content'),
+                'label' => false,
                 'attr' => [
+                    'placeholder' => $this->translator->trans('simsy_cms.block.content'),
                     'class' => 'simsy-input',
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

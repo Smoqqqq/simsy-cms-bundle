@@ -1,5 +1,19 @@
 <form method="POST" action="{{ path('simsy_cms_admin_section_delete', { pageId: page.id, id: section.id }) }}" class="d-inline-block">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete_section_' ~ section.id) }}">
-    <button type="submit" class="btn btn-sm btn-danger">{{ 'simsy_cms.delete'|trans }}</button>
+
+    <button type="submit" class="d-none" id="section-{{ section.id }}-save"></button>
+
+    <!-- Button trigger modal -->
+    <button id="section-{{ section.id }}-delete" type="button" class="btn btn-sm btn-danger" data-bs-custom-class="popover-danger" data-bs-toggle="popover" data-bs-title="{{ 'simsy_cms.confirm_action'|trans }}" data-bs-content="
+{{ 'simsy_cms.delete_section_modal'|trans }}
+
+<div class='d-flex justify-content-between mt-3'>
+<button onclick='document.getElementById(`section-{{ section.id }}-delete`).click();' class='btn btn-sm btn-secondary'>{{ 'simsy_cms.cancel'|trans }} <i class='bi bi-x'></i></button>
+<button onclick='document.getElementById(`section-{{ section.id }}-save`).click();; document.getElementById(`section-{{ section.id }}-save`).click();' class='btn btn-sm btn-danger'>{{ 'simsy_cms.delete'|trans }} <i class='bi bi-trash'></i></button>
+</div>
+" data-bs-placement="top" data-html="true" data-sanitize="false">
+        {{ 'simsy_cms.delete'|trans }} <i class="bi bi-trash"></i>
+    </button>
+
 </form>

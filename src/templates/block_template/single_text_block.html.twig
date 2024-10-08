@@ -1,1 +1,5 @@
-{{ block.content }}
+{% if form is defined and form %}
+    {{ form_row(form.content) }}
+{% else %}
+    {{ block.content }}
+{% endif %}

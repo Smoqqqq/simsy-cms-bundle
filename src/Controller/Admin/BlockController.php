@@ -21,12 +21,12 @@ class BlockController extends AbstractController
     #[Route('/{sectionId}/select', name: 'select', methods: ['GET'], requirements: ['sectionId' => '\d+'])]
     public function select(BlockService $blockService, string $sectionId, Request $request): Response
     {
-        $blockId = $request->query->getInt('blockId', 0);
+        $nextBlockId = $request->query->getInt('nextBlockId', 0);
 
         return $this->render('@SimsyCMS/admin/block/_block_select.html.twig', [
             'blocks' => $blockService->getAvailableBlocks(),
             'sectionId' => $sectionId,
-            'blockId' => $blockId,
+            'nextBlockId' => $nextBlockId,
         ]);
     }
 
@@ -40,20 +40,29 @@ class BlockController extends AbstractController
         BlockRepository $blockRepository
     ): Response
     {
-        $blockId = $request->query->getInt('blockId', 0);
+        $nextBlockId = $request->query->getInt('nextBlockId', 0);
+        $nextBlock = $blockRepository->find($nextBlockId);
 
         /** @var BlockInterface $block */
         $block = new $blockClass();
-        $form = $this->createForm($blockService->getBlockConfiguration($block)['form_class'], $block, ['action' => $this->generateUrl('simsy_cms_admin_block_create', ['sectionId' => $section->getId(), 'blockClass' => $blockClass, 'blockId' => $blockId])]);
+
+        $blockConfig = $blockService->getBlockConfiguration($block);
+
+        $block->setPosition($nextBlock ? $nextBlock->getPosition() : 0);
+        $form = $this->createForm($blockConfig['form_class'], $block, ['action' => $this->generateUrl('simsy_cms_admin_block_create', ['sectionId' => $section->getId(), 'blockClass' => $blockClass, 'nextBlockId' => $nextBlockId])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $section->addBlock($block);
 
+            foreach ($blockRepository->findFollowingBlocks($block) as $followingBlock) {
+                $followingBlock->setPosition($followingBlock->getPosition() + 1);
+            }
+
             $em->persist($block);
             $em->flush();
 
-            $oldBlock = $blockRepository->find($blockId);
+            $oldBlock = $blockRepository->find($nextBlockId);
 
             $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
@@ -61,14 +70,15 @@ class BlockController extends AbstractController
                 'oldBlock' => $oldBlock,
                 'newBlock' => $block,
                 'oldBlockConfig' => $oldBlock ? $blockService->getBlockConfiguration($oldBlock) : null,
-                'blockConfig' => $blockService->getBlockConfiguration($block),
+                'blockConfig' => $blockConfig,
             ]);
         }
 
         return $this->render('@SimsyCMS/admin/block/create.html.twig', [
             'form' => $form,
             'section' => $section,
-            'blockId' => $blockId,
+            'nextBlockId' => $nextBlockId,
+            'blockConfig' => $blockConfig,
         ]);
     }
 
@@ -80,7 +90,8 @@ class BlockController extends AbstractController
         BlockService $blockService,
     ): Response
     {
-        $form = $this->createForm($blockService->getBlockConfiguration($block)['form_class'], $block, ['action' => $this->generateUrl('simsy_cms_admin_block_edit', ['id' => $block->getId()])]);
+        $blockConfig = $blockService->getBlockConfiguration($block);
+        $form = $this->createForm($blockConfig['form_class'], $block, ['action' => $this->generateUrl('simsy_cms_admin_block_edit', ['id' => $block->getId()]), 'attr' => ['class' => 'block-form']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -94,6 +105,7 @@ class BlockController extends AbstractController
         return $this->render('@SimsyCMS/admin/block/edit.html.twig', [
             'form' => $form,
             'block' => $block,
+            'blockConfig' => $blockConfig,
         ]);
     }
 

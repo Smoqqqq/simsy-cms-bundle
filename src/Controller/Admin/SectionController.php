@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace Smoq\SimsyCMS\Controller\Admin;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
+use Smoq\SimsyCMS\Entity\Block;
 use Smoq\SimsyCMS\Entity\Page;
 use Smoq\SimsyCMS\Entity\Section;
 use Smoq\SimsyCMS\Form\SectionType;
+use Smoq\SimsyCMS\Repository\BlockRepository;
+use Smoq\SimsyCMS\Repository\SectionRepository;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,6 +30,7 @@ class SectionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $page->addSection($section);
+            $section->setPosition($page->getSections()->count());
 
             $em->persist($section);
             $em->flush();
@@ -110,5 +115,33 @@ class SectionController extends AbstractController
         return $this->render('@SimsyCMS/admin/section/_delete_from_stream.html.twig', [
             'sectionId' => $sectionId,
         ]);
+    }
+
+    #[Route('page/section/order', name: 'order')]
+    public function order(
+        Request $request,
+        EntityManagerInterface $em,
+        BlockRepository $blockRepository,
+        SectionRepository $sectionRepository,
+        LoggerInterface $logger
+    ): Response
+    {
+        $blocks = $request->getPayload()->all()['blocks'];
+
+        foreach ($blocks as $position => $data) {
+            $block = $blockRepository->find($data['id']);
+            $section = $sectionRepository->find($data['sectionId']);
+
+            if ($block && $section) {
+                $block->setPosition($position)
+                    ->setSection($section);
+            } else {
+                $logger->error('Block or section not found', ['block_id' => $data['id'], 'section_id' => $data['sectionId']]);
+            }
+        }
+
+        $em->flush();
+
+        return new Response();
     }
 }

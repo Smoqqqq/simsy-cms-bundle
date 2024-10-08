@@ -2,17 +2,21 @@
     <template>
         <div class="simsy_cms_section" id="page-section-{{ section.id }}">
             <div class="simsy_cms_section_header">
-                <turbo-frame class="simsy_cms_section_header_form" id="page-section-header-{{ section.id }}" src="{{ path('simsy_cms_admin_section_edit_header', { pageId: page.id, id: section.id }) }}">
-                    <div class="simsy_cms_section_name" onclick="document.getElementById('page-section-header-{{ section.id }}-form').classList.toggle('d-none')">{{ section.name }} <i class="bi bi-pen"></i></div>
+                <turbo-frame class="simsy_cms_section_header_form" id="page-section-header-{{ section.id }}"
+                             src="{{ path('simsy_cms_admin_section_edit_header', { pageId: page.id, id: section.id }) }}">
                 </turbo-frame>
             </div>
-            <div class="simsy_cms_section_content">
-                {% for block in section.blocks %}
+            <div class="simsy_cms_section_content" data-order-url="{{ path('simsy_cms_admin_section_order') }}" data-section-id="{{ section.id }}">
+
+                {% for block in section.blocks|sort((a,b) => a.position > b.position) %}
                     {% include '@SimsyCMS/admin/block/_show.html.twig' with { blockConfig: blockService.getBlockConfiguration(block) } %}
                 {% endfor %}
 
-                {# Allow to add a block at the end #}
-                <turbo-frame id="section-{{ section.id }}-block-select-frame-0" src="{{ path('simsy_cms_admin_block_select', { sectionId: section.id }) }}"></turbo-frame>
+                <div class="simsy_cms_editor_block">
+                    {# Allow to add a block at the end #}
+                    <turbo-frame id="section-{{ section.id }}-block-select-frame-0"
+                                 src="{{ path('simsy_cms_admin_block_select', { sectionId: section.id }) }}"></turbo-frame>
+                </div>
             </div>
         </div>
     </template>

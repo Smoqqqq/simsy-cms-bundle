@@ -3,10 +3,12 @@
 namespace Smoq\SimsyCMS\Service;
 
 use Smoq\SimsyCMS\Contracts\BlockInterface;
+use Smoq\SimsyCMS\Entity\DualImageBlock;
 use Smoq\SimsyCMS\Entity\DualTextBlock;
 use Smoq\SimsyCMS\Entity\SingleImageBlock;
 use Smoq\SimsyCMS\Entity\SingleTextBlock;
 use Smoq\SimsyCMS\Entity\SingleVideoBlock;
+use Smoq\SimsyCMS\Form\DualImageBlockType;
 use Smoq\SimsyCMS\Form\DualTextBlockType;
 use Smoq\SimsyCMS\Form\SingleImageBlockType;
 use Smoq\SimsyCMS\Form\SingleTextBlockType;
@@ -31,6 +33,7 @@ class BlockService
                 'description' => $this->translator->trans('simsy_cms.block.single_text.description'),
                 'image_src' => 'bundles/simsycms/images/blocks/single_text_block.png',
                 'template_path' => '@SimsyCMS/block_template/single_text_block.html.twig',
+                'form_template_path' => '@SimsyCMS/block_template/single_text_block.html.twig',
                 'form_class' => SingleTextBlockType::class,
                 'type' => 'single_text',
             ],
@@ -40,6 +43,7 @@ class BlockService
                 'description' => $this->translator->trans('simsy_cms.block.dual_text.description'),
                 'image_src' => 'bundles/simsycms/images/blocks/dual_text_block.png',
                 'template_path' => '@SimsyCMS/block_template/dual_text_block.html.twig',
+                'form_template_path' => '@SimsyCMS/block_template/dual_text_block.html.twig',
                 'form_class' => DualTextBlockType::class,
                 'type' => 'dual_text',
             ],
@@ -49,8 +53,19 @@ class BlockService
                 'description' => $this->translator->trans('simsy_cms.block.single_image.description'),
                 'image_src' => 'bundles/simsycms/images/blocks/single_image_block.png',
                 'template_path' => '@SimsyCMS/block_template/single_image_block.html.twig',
+                'form_template_path' => '@SimsyCMS/block_template/single_image_block.html.twig',
                 'form_class' => SingleImageBlockType::class,
                 'type' => 'single_image',
+            ],
+            DualImageBlock::class => [
+                'class' => DualImageBlock::class,
+                'name' => $this->translator->trans('simsy_cms.block.dual_image.name'),
+                'description' => $this->translator->trans('simsy_cms.block.dual_image.description'),
+                'image_src' => 'bundles/simsycms/images/blocks/dual_image_block.png',
+                'template_path' => '@SimsyCMS/block_template/dual_image_block.html.twig',
+                'form_template_path' => '@SimsyCMS/block_template/dual_image_block.html.twig',
+                'form_class' => DualImageBlockType::class,
+                'type' => 'dual_image',
             ],
             SingleVideoBlock::class => [
                 'class' => SingleVideoBlock::class,
@@ -58,6 +73,7 @@ class BlockService
                 'description' => $this->translator->trans('simsy_cms.block.single_video.description'),
                 'image_src' => 'bundles/simsycms/images/blocks/single_video_block.png',
                 'template_path' => '@SimsyCMS/block_template/single_video_block.html.twig',
+                'form_template_path' => '@SimsyCMS/block_template/single_video_block.html.twig',
                 'form_class' => SingleVideoBlockType::class,
                 'type' => 'single_video',
             ],
@@ -66,7 +82,8 @@ class BlockService
 
     public function getAvailableBlocks(): array
     {
-        return $this->cache->get('simsy_cms.available_blocks', function (ItemInterface $item) {
+//        $this->cache->delete('simsy_cms.available_blocks');
+        return $this->cache->get('simsy_cms.available_blocks', function () {
             $customBlocks = $this->parameterBag->get('simsy_cms.custom_blocks');
             $blockClasses = array_merge($this->getBlocks(), $customBlocks);
 
@@ -98,10 +115,11 @@ class BlockService
                     'class' => $block['class'],
                     'name' => $translatedName,
                     'description' => $translatedDescription,
-                    'image_src' => $block['image_src'] ?? null,
                     'form_class' => $formClass,
                     'template_path' => $block['template_path'],
                     'type' => $block['type'] ?? $key,
+                    'image_src' => $block['image_src'] ?? null,
+                    'form_template_path' => $block['form_template_path'] ?? null,
                 ];;
             }
 

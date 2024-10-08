@@ -7,7 +7,7 @@ window.addEventListener('turbo:load', () => {
         const pageId = sectionFrame.getAttribute('data-page-id');
 
         addBtn.addEventListener('click', () => {
-            rightPanel.setAttribute('src', addBtn.getAttribute('data-url').replace('/0/', `/${pageId}/`));
+            rightPanel.setAttribute('src', addBtn.getAttribute('data-url'));
         });
     }
 
@@ -15,11 +15,9 @@ window.addEventListener('turbo:load', () => {
 
     if (editConfigBtn) {
         const rightPanel = document.getElementById('right-panel-frame') as HTMLDivElement;
-        const sectionFrame = document.getElementById('page-section-frame') as HTMLDivElement;
-        const pageId = sectionFrame.getAttribute('data-page-id');
 
         editConfigBtn.addEventListener('click', () => {
-            rightPanel.setAttribute('src', editConfigBtn.getAttribute('data-url').replace('/0/', `/${pageId}/`));
+            rightPanel.setAttribute('src', editConfigBtn.getAttribute('data-url'));
         });
     }
 
@@ -65,5 +63,14 @@ window.addEventListener('turbo:load', () => {
                 }
             });
         });
+
+        const blockViews = document.querySelectorAll('.simsy_cms_block_view');
+        blockViews.forEach(view => {
+            const editBtn = view.parentNode.querySelector('.simsy_cms_block_edit_btn') as HTMLDivElement;
+
+            view.addEventListener('dblclick', () => {
+                editBtn.click();
+            })
+        })
     });
 });

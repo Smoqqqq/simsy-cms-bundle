@@ -19,18 +19,19 @@ class DualTextBlockType extends AbstractType
     {
         $builder
             ->add('leftContent', TextType::class, [
-                'label' => $this->translator->trans('simsy_cms.block.left_content'),
+                'label' => false,
                 'attr' => [
+                    'placeholder' => $this->translator->trans('simsy_cms.block.left_content'),
                     'class' => 'simsy-input',
                 ],
             ])
             ->add('rightContent', TextType::class, [
-                'label' => $this->translator->trans('simsy_cms.block.right_content'),
+                'label' => false,
                 'attr' => [
+                    'placeholder' => $this->translator->trans('simsy_cms.block.right_content'),
                     'class' => 'simsy-input',
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

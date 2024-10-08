@@ -1,0 +1,20 @@
+<form method="POST" action="{{ path('simsy_cms_admin_block_delete', { id: block.id }) }}" class="d-inline-block" id="block-{{ block.id }}-edit-container">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete_block_' ~ block.id) }}">
+
+    <button type="submit" class="d-none" id="block-{{ block.id }}-save"></button>
+w
+    <!-- Button trigger modal -->
+    <button id="block-{{ block.id }}-delete" type="button" data-container="#block-{{ block.id }}-edit-container" class="btn btn-sm btn-danger" data-bs-custom-class="popover-danger" data-bs-toggle="popover" data-bs-title="{{ 'simsy_cms.confirm_action'|trans }}" data-bs-content="
+{{ 'simsy_cms.delete_block_modal'|trans }}
+
+<div class='d-flex justify-content-between mt-3'>
+<button onclick='document.getElementById(`block-{{ block.id }}-delete`).click();' class='btn btn-sm btn-secondary'>{{ 'simsy_cms.cancel'|trans }} <i class='bi bi-x'></i></button>
+
+<button onclick='document.getElementById(`block-{{ block.id }}-delete`).click(); document.getElementById(`block-{{ block.id }}-save`).click();' class='btn btn-sm btn-danger'>{{ 'simsy_cms.delete'|trans }} <i class='bi bi-trash'></i></button>
+</div>
+" data-bs-placement="bottom" data-html="true" data-sanitize="false">
+        {{ 'simsy_cms.delete'|trans }} <i class="bi bi-trash"></i>
+    </button>
+
+</form>

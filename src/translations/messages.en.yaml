@@ -12,6 +12,9 @@ simsy_cms:
     pages: 'Pages'
     file: 'File'
     full_edit_mode: 'Full edit mode'
+    confirm_action: 'Confirm action'
+    delete_section_modal: 'Are you sure you want to delete this section? This action cannot be undone. All blocks of the section will be deleted.'
+    delete_block_modal: 'Are you sure you want to delete this block? This action cannot be undone.'
 
     block:
         add: 'Add block'
@@ -27,6 +30,9 @@ simsy_cms:
         single_image:
             name: 'Single image'
             description: 'A block with a single image that spends the full width of the container'
+        dual_image:
+            name: 'Dual image'
+            description: 'A block with two images, side by side'
         single_video:
             name: 'Single video'
             description: 'A block with a single video that spends the full width of the container'

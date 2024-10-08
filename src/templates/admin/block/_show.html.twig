@@ -1,6 +1,8 @@
-<turbo-frame id="section-{{ block.section.id }}-block-show-frame-{{ block.id }}">
+<turbo-frame id="section-{{ block.section.id }}-block-show-frame-{{ block.id }}" class="simsy_cms_editor_block"
+             draggable="true" data-block-id="{{ block.id }}">
     <turbo-frame id="section-{{ block.section.id }}-block-select-frame-{{ block.id }}"
-                 src="{{ path('simsy_cms_admin_block_select', { sectionId: block.section.id, blockId: block.id }) }}" class="block-select-frame"></turbo-frame>
+                 src="{{ path('simsy_cms_admin_block_select', { sectionId: block.section.id, nextBlockId: block.id }) }}"
+                 class="block-select-frame"></turbo-frame>
 
     <div class="simsy-editor-block">
         <div class="simsy-editor-block-header">
@@ -8,10 +10,13 @@
                 {{ blockConfig.name }} #{{ block.id }}
             </div>
             <div class="actions">
-                <a href="{{ path('simsy_cms_admin_block_edit', { id: block.id }) }}" class="text-black text-decoration-none ms-3 action">{{ 'simsy_cms.edit'|trans }}</a>
-                <a href="{{ path('simsy_cms_admin_block_delete', { id: block.id }) }}" class="text-black text-decoration-none action" data-turbo-prefetch="false">{{ 'simsy_cms.delete'|trans }}</a>
+                <a href="{{ path('simsy_cms_admin_block_edit', { id: block.id }) }}"
+                   class="btn btn-sm btn-secondary simsy_cms_block_edit_btn">{{ 'simsy_cms.edit'|trans }} <span class="bi bi-pen"></span></a>
+                {% include '@SimsyCMS/admin/block/_delete_form.html.twig' %}
             </div>
         </div>
-        {% include blockConfig.template_path %}
+        <div class="simsy_cms_block_view">
+            {% include blockConfig.template_path %}
+        </div>
     </div>
 </turbo-frame>

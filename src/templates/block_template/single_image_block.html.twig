@@ -1,1 +1,5 @@
-<img src="/{{ block.file.path }}" class="w-100">
+{% if form is defined and form %}
+    {{ form_row(form.file) }}
+{% else %}
+    <img src="/{{ block.file.path }}" class="w-100">
+{% endif %}

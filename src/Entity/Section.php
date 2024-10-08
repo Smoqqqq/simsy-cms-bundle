@@ -33,6 +33,9 @@ class Section
     #[ORM\OneToMany(targetEntity: Block::class, mappedBy: 'section', cascade: ['persist', 'remove'])]
     private Collection $blocks;
 
+    #[ORM\Column]
+    private int $position;
+
     public function __construct()
     {
         $this->pages = new ArrayCollection();
@@ -123,5 +126,17 @@ class Section
         }
 
         return $this;
+    }
+
+    public function setPosition(int $position): static
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    public function getPosition(): int
+    {
+        return $this->position;
     }
 }

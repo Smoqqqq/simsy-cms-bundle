@@ -12,4 +12,6 @@
         {% endfor %}
     </div>
     <div class="block-select-frame"></div>
+
+    <div class="btn btn-primary" id="page-section-add" data-url="{{ path('simsy_cms_admin_section_create', { id: page.id }) }}">{{ 'simsy_cms.section.add'|trans }}</div>
 {% endif %}

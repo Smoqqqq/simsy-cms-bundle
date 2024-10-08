@@ -2438,7 +2438,7 @@ textarea.form-control-lg {
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
-.btn-check[disabled] + .btn, .btn-check:disabled + .btn {
+.btn-check[disabled] + .btn, .block-selector .block-selector-add .btn-check[disabled] + .block-selector-add-toggle, .btn-check:disabled + .btn, .block-selector .block-selector-add .btn-check:disabled + .block-selector-add-toggle {
   pointer-events: none;
   filter: none;
   opacity: 0.65;
@@ -2639,11 +2639,11 @@ textarea.form-control-lg {
 .input-group > .form-floating:focus-within {
   z-index: 5;
 }
-.input-group .btn {
+.input-group .btn, .input-group .block-selector .block-selector-add .block-selector-add-toggle, .block-selector .block-selector-add .input-group .block-selector-add-toggle {
   position: relative;
   z-index: 2;
 }
-.input-group .btn:focus {
+.input-group .btn:focus, .input-group .block-selector .block-selector-add .block-selector-add-toggle:focus, .block-selector .block-selector-add .input-group .block-selector-add-toggle:focus {
   z-index: 5;
 }
 
@@ -2665,7 +2665,8 @@ textarea.form-control-lg {
 .input-group-lg > .form-control,
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text,
-.input-group-lg > .btn {
+.input-group-lg > .btn,
+.block-selector .block-selector-add .input-group-lg > .block-selector-add-toggle {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   border-radius: var(--bs-border-radius-lg);
@@ -2674,7 +2675,8 @@ textarea.form-control-lg {
 .input-group-sm > .form-control,
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text,
-.input-group-sm > .btn {
+.input-group-sm > .btn,
+.block-selector .block-selector-add .input-group-sm > .block-selector-add-toggle {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: var(--bs-border-radius-sm);
@@ -2890,7 +2892,7 @@ textarea.form-control-lg {
   z-index: 4;
 }
 
-.btn {
+.btn, .block-selector .block-selector-add .block-selector-add-toggle {
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
   --bs-btn-font-family: ;
@@ -2924,44 +2926,44 @@ textarea.form-control-lg {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn {
+  .btn, .block-selector .block-selector-add .block-selector-add-toggle {
     transition: none;
   }
 }
-.btn:hover {
+.btn:hover, .block-selector .block-selector-add .block-selector-add-toggle:hover {
   color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
 }
-.btn-check + .btn:hover {
+.btn-check + .btn:hover, .block-selector .block-selector-add .btn-check + .block-selector-add-toggle:hover {
   color: var(--bs-btn-color);
   background-color: var(--bs-btn-bg);
   border-color: var(--bs-btn-border-color);
 }
-.btn:focus-visible {
+.btn:focus-visible, .block-selector .block-selector-add .block-selector-add-toggle:focus-visible {
   color: var(--bs-btn-hover-color);
   background-color: var(--bs-btn-hover-bg);
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:focus-visible + .btn {
+.btn-check:focus-visible + .btn, .block-selector .block-selector-add .btn-check:focus-visible + .block-selector-add-toggle {
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+.btn-check:checked + .btn, .block-selector .block-selector-add .btn-check:checked + .block-selector-add-toggle, :not(.btn-check) + .btn:active, .block-selector .block-selector-add :not(.btn-check) + .block-selector-add-toggle:active, .btn:first-child:active, .block-selector .block-selector-add .block-selector-add-toggle:first-child:active, .btn.active, .block-selector .block-selector-add .active.block-selector-add-toggle, .btn.show, .block-selector .block-selector-add .show.block-selector-add-toggle {
   color: var(--bs-btn-active-color);
   background-color: var(--bs-btn-active-bg);
   border-color: var(--bs-btn-active-border-color);
 }
-.btn-check:checked + .btn:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .btn:first-child:active:focus-visible, .btn.active:focus-visible, .btn.show:focus-visible {
+.btn-check:checked + .btn:focus-visible, .block-selector .block-selector-add .btn-check:checked + .block-selector-add-toggle:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .block-selector .block-selector-add :not(.btn-check) + .block-selector-add-toggle:active:focus-visible, .btn:first-child:active:focus-visible, .block-selector .block-selector-add .block-selector-add-toggle:first-child:active:focus-visible, .btn.active:focus-visible, .block-selector .block-selector-add .active.block-selector-add-toggle:focus-visible, .btn.show:focus-visible, .block-selector .block-selector-add .show.block-selector-add-toggle:focus-visible {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn-check:checked:focus-visible + .btn {
+.btn-check:checked:focus-visible + .btn, .block-selector .block-selector-add .btn-check:checked:focus-visible + .block-selector-add-toggle {
   box-shadow: var(--bs-btn-focus-box-shadow);
 }
-.btn:disabled, .btn.disabled, fieldset:disabled .btn {
+.btn:disabled, .block-selector .block-selector-add .block-selector-add-toggle:disabled, .btn.disabled, .block-selector .block-selector-add .disabled.block-selector-add-toggle, fieldset:disabled .btn, fieldset:disabled .block-selector .block-selector-add .block-selector-add-toggle, .block-selector .block-selector-add fieldset:disabled .block-selector-add-toggle {
   color: var(--bs-btn-disabled-color);
   pointer-events: none;
   background-color: var(--bs-btn-disabled-bg);
@@ -2986,7 +2988,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #90caf9;
 }
 
-.btn-secondary {
+.btn-secondary, .block-selector .block-selector-add .block-selector-add-toggle {
   --bs-btn-color: #000;
   --bs-btn-bg: #eaeaea;
   --bs-btn-border-color: #eaeaea;
@@ -3263,14 +3265,14 @@ textarea.form-control-lg {
   color: var(--bs-btn-hover-color);
 }
 
-.btn-lg, .btn-group-lg > .btn {
+.btn-lg, .btn-group-lg > .btn, .block-selector .block-selector-add .btn-group-lg > .block-selector-add-toggle {
   --bs-btn-padding-y: 0.5rem;
   --bs-btn-padding-x: 1rem;
   --bs-btn-font-size: 1.25rem;
   --bs-btn-border-radius: var(--bs-border-radius-lg);
 }
 
-.btn-sm, .btn-group-sm > .btn {
+.btn-sm, .block-selector .block-selector-add .block-selector-add-toggle, .btn-group-sm > .btn {
   --bs-btn-padding-y: 0.25rem;
   --bs-btn-padding-x: 0.5rem;
   --bs-btn-font-size: 0.875rem;
@@ -3637,23 +3639,35 @@ textarea.form-control-lg {
   display: inline-flex;
   vertical-align: middle;
 }
-.btn-group > .btn,
-.btn-group-vertical > .btn {
+.btn-group > .btn, .block-selector .block-selector-add .btn-group > .block-selector-add-toggle,
+.btn-group-vertical > .btn,
+.block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle {
   position: relative;
   flex: 1 1 auto;
 }
-.btn-group > .btn-check:checked + .btn,
+.btn-group > .btn-check:checked + .btn, .block-selector .block-selector-add .btn-group > .btn-check:checked + .block-selector-add-toggle,
 .btn-group > .btn-check:focus + .btn,
+.block-selector .block-selector-add .btn-group > .btn-check:focus + .block-selector-add-toggle,
 .btn-group > .btn:hover,
+.block-selector .block-selector-add .btn-group > .block-selector-add-toggle:hover,
 .btn-group > .btn:focus,
+.block-selector .block-selector-add .btn-group > .block-selector-add-toggle:focus,
 .btn-group > .btn:active,
+.block-selector .block-selector-add .btn-group > .block-selector-add-toggle:active,
 .btn-group > .btn.active,
+.block-selector .block-selector-add .btn-group > .active.block-selector-add-toggle,
 .btn-group-vertical > .btn-check:checked + .btn,
+.block-selector .block-selector-add .btn-group-vertical > .btn-check:checked + .block-selector-add-toggle,
 .btn-group-vertical > .btn-check:focus + .btn,
+.block-selector .block-selector-add .btn-group-vertical > .btn-check:focus + .block-selector-add-toggle,
 .btn-group-vertical > .btn:hover,
+.block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle:hover,
 .btn-group-vertical > .btn:focus,
+.block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle:focus,
 .btn-group-vertical > .btn:active,
-.btn-group-vertical > .btn.active {
+.block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle:active,
+.btn-group-vertical > .btn.active,
+.block-selector .block-selector-add .btn-group-vertical > .active.block-selector-add-toggle {
   z-index: 1;
 }
 
@@ -3669,19 +3683,23 @@ textarea.form-control-lg {
 .btn-group {
   border-radius: var(--bs-border-radius);
 }
-.btn-group > :not(.btn-check:first-child) + .btn,
+.btn-group > :not(.btn-check:first-child) + .btn, .block-selector .block-selector-add .btn-group > :not(.btn-check:first-child) + .block-selector-add-toggle,
 .btn-group > .btn-group:not(:first-child) {
   margin-left: calc(var(--bs-border-width) * -1);
 }
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .block-selector .block-selector-add .btn-group > .block-selector-add-toggle:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn.dropdown-toggle-split:first-child,
-.btn-group > .btn-group:not(:last-child) > .btn {
+.block-selector .block-selector-add .btn-group > .dropdown-toggle-split.block-selector-add-toggle:first-child,
+.btn-group > .btn-group:not(:last-child) > .btn,
+.block-selector .block-selector-add .btn-group > .btn-group:not(:last-child) > .block-selector-add-toggle {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.btn-group > .btn:nth-child(n+3),
+.btn-group > .btn:nth-child(n+3), .block-selector .block-selector-add .btn-group > .block-selector-add-toggle:nth-child(n+3),
 .btn-group > :not(.btn-check) + .btn,
-.btn-group > .btn-group:not(:first-child) > .btn {
+.block-selector .block-selector-add .btn-group > :not(.btn-check) + .block-selector-add-toggle,
+.btn-group > .btn-group:not(:first-child) > .btn,
+.block-selector .block-selector-add .btn-group > .btn-group:not(:first-child) > .block-selector-add-toggle {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -3697,12 +3715,12 @@ textarea.form-control-lg {
   margin-right: 0;
 }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .block-selector .block-selector-add .block-selector-add-toggle + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
 
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .block-selector .block-selector-add .btn-group-lg > .block-selector-add-toggle + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
@@ -3712,21 +3730,23 @@ textarea.form-control-lg {
   align-items: flex-start;
   justify-content: center;
 }
-.btn-group-vertical > .btn,
+.btn-group-vertical > .btn, .block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle,
 .btn-group-vertical > .btn-group {
   width: 100%;
 }
-.btn-group-vertical > .btn:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), .block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) {
   margin-top: calc(var(--bs-border-width) * -1);
 }
-.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle),
-.btn-group-vertical > .btn-group:not(:last-child) > .btn {
+.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle:not(:last-child):not(.dropdown-toggle),
+.btn-group-vertical > .btn-group:not(:last-child) > .btn,
+.block-selector .block-selector-add .btn-group-vertical > .btn-group:not(:last-child) > .block-selector-add-toggle {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
-.btn-group-vertical > .btn ~ .btn,
-.btn-group-vertical > .btn-group:not(:first-child) > .btn {
+.btn-group-vertical > .btn ~ .btn, .block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle ~ .btn, .block-selector .block-selector-add .btn-group-vertical > .btn ~ .block-selector-add-toggle, .block-selector .block-selector-add .btn-group-vertical > .block-selector-add-toggle ~ .block-selector-add-toggle,
+.btn-group-vertical > .btn-group:not(:first-child) > .btn,
+.block-selector .block-selector-add .btn-group-vertical > .btn-group:not(:first-child) > .block-selector-add-toggle {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -4766,7 +4786,7 @@ textarea.form-control-lg {
   display: none;
 }
 
-.btn .badge {
+.btn .badge, .block-selector .block-selector-add .block-selector-add-toggle .badge {
   position: relative;
   top: -1px;
 }
@@ -6706,7 +6726,7 @@ textarea.form-control-lg {
   background-color: currentcolor;
   opacity: 0.5;
 }
-.placeholder.btn::before {
+.placeholder.btn::before, .block-selector .block-selector-add .placeholder.block-selector-add-toggle::before {
   display: inline-block;
   content: "";
 }
@@ -20081,11 +20101,6 @@ textarea.form-control-lg {
   overflow: hidden;
 }
 .block-selector .block-selector-add .block-selector-add-toggle {
-  background: #eaeaea;
-  padding: 0 10px;
-  border-radius: 4px;
-  width: fit-content;
-  cursor: pointer;
   visibility: hidden;
   position: relative;
   transform: translateX(-50%);
@@ -20093,20 +20108,20 @@ textarea.form-control-lg {
 .block-selector .block-selector-add .block-selector-add-toggle::after {
   width: 100vw;
   position: absolute;
-  left: calc(100% + 10px);
+  left: calc(100% + 20px);
   top: 50%;
   transform: translateY(-50%);
   content: "";
-  border-top: 2px dashed #eaeaea;
+  border-top: 2px dashed #adb5bd;
 }
 .block-selector .block-selector-add .block-selector-add-toggle::before {
   width: 100vw;
   position: absolute;
-  right: calc(100% + 10px);
+  right: calc(100% + 20px);
   top: 50%;
   transform: translateY(-50%);
   content: "";
-  border-top: 2px dashed #eaeaea;
+  border-top: 2px dashed #adb5bd;
 }
 .block-selector .block-selector-add:hover .block-selector-add-toggle, .block-selector .block-selector-add.selecting .block-selector-add-toggle {
   visibility: visible;
@@ -20126,7 +20141,7 @@ textarea.form-control-lg {
 }
 .block-selector .block-selector-blocks .block-selector-block {
   padding: 5px 10px;
-  border: 1px solid #eaeaea;
+  border: 1px solid #adb5bd;
   color: black;
   text-decoration: none;
   display: block;
@@ -20134,7 +20149,7 @@ textarea.form-control-lg {
   transition: 0.2s;
 }
 .block-selector .block-selector-blocks .block-selector-block:hover {
-  background: #eaeaea;
+  background: #adb5bd;
 }
 .block-selector .block-selector-blocks .block-selector-block:not(:last-child) {
   margin-bottom: 5px;
@@ -20153,24 +20168,38 @@ textarea.form-control-lg {
 }
 
 .simsy_cms_section {
-  border: 2px dashed transparent;
-  margin: 20px 0 5px 0;
+  border: 2px dashed #90caf9;
+  margin: 40px 0 5px 0;
+}
+.simsy_cms_section .simsy_cms_section_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form {
   position: relative;
-  display: none;
+  display: block;
 }
-.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_name {
+.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_actions {
   position: absolute;
   left: -2px;
   top: 0;
   transform: translateY(-100%);
-  border: 2px solid #90caf9;
-  background: #90caf9;
-  padding: 0 8px;
+  border: 2px dashed #90caf9;
+  border-bottom: 2px solid white;
+  background: white;
+  padding: 4px;
   white-space: nowrap;
   cursor: pointer;
   z-index: 999;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .simsy_cms_section_actions .name {
+  height: fit-content;
+  margin-right: 10px;
+  font-size: 14px;
 }
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .card {
   position: absolute;
@@ -20182,53 +20211,53 @@ textarea.form-control-lg {
 .simsy_cms_section .simsy_cms_section_header .simsy_cms_section_header_form .card .card-body {
   padding: 10px;
 }
-.simsy_cms_section:hover {
-  border-color: #90caf9;
-}
-.simsy_cms_section:hover .simsy_cms_section_header_form {
-  display: block;
-}
 
 .simsy-editor-block {
+  border: 2px dashed #adb5bd;
   position: relative;
   padding-top: 20px;
+}
+.simsy-editor-block.edit {
+  z-index: 10;
 }
 .simsy-editor-block .simsy-editor-block-header {
   position: absolute;
   left: -2px;
   top: 0;
   transform: translateY(-100%);
-  background: #eaeaea;
-  border: 2px solid #eaeaea;
-  padding: 2px 1px 2px 4px;
+  padding: 4px;
   white-space: nowrap;
   display: flex;
   flex-direction: row;
+  border: 2px dashed #adb5bd;
+  border-bottom: 2px solid white;
+  align-items: center;
+}
+.simsy-editor-block .simsy-editor-block-header .name {
+  height: fit-content;
+  margin-right: 10px;
   font-size: 14px;
 }
-.simsy-editor-block .simsy-editor-block-header .action {
-  padding: 2px 6px;
-}
-.simsy-editor-block .simsy-editor-block-header .action:hover {
-  background: white;
+.simsy-editor-block .simsy_cms_block_view {
+  cursor: move;
 }
 
 .block-form-frame {
   margin: 25px 0 35px 0;
 }
 
-.border-dashed-secondary, .simsy-editor-block {
+.border-dashed-secondary {
   border: 2px dashed #eaeaea;
 }
 
-#page-section-frame:not(.editing) .simsy-editor-block {
+#page-section-frame:not(.editing) .simsy-editor-block:not(.edit) {
   padding: 0;
   margin: 0;
 }
-#page-section-frame:not(.editing) .simsy-editor-block:not(:hover) {
+#page-section-frame:not(.editing) .simsy-editor-block:not(.edit):not(:hover) {
   border-color: transparent;
 }
-#page-section-frame:not(.editing) .simsy-editor-block:not(:hover) .simsy-editor-block-header {
+#page-section-frame:not(.editing) .simsy-editor-block:not(.edit):not(:hover) .simsy-editor-block-header {
   display: none;
 }
 #page-section-frame.editing .simsy_cms_section {
@@ -20236,6 +20265,44 @@ textarea.form-control-lg {
 }
 #page-section-frame.editing .simsy_cms_section .simsy_cms_section_header_form {
   display: block;
+}
+
+.block-form {
+  position: relative;
+}
+.block-form input {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.block-form > div {
+  border: 2px dashed #adb5bd;
+}
+.block-form .block-form-edit-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: white;
+  border-bottom: 2px solid white !important;
+  width: fit-content;
+  margin-bottom: -2px;
+  position: relative;
+  padding: 4px;
+}
+.block-form .block-form-edit-actions .name {
+  height: fit-content;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.dragging {
+  opacity: 0.5;
+  transform: scale(0.5);
+}
+
+.drag-over {
+  box-shadow: inset 0 0 0 2px #90caf9;
 }
 
 .simsy-input {
@@ -20258,21 +20325,30 @@ fieldset.simsy-section legend {
   padding-right: 15px;
 }
 
-.btn {
+.btn, .block-selector .block-selector-add .block-selector-add-toggle {
   border-radius: 10px;
-  background: transparent;
+  background: white;
   border-width: 2px;
   color: black;
 }
-.btn.btn-primary:hover {
+.btn.btn-sm, .btn-group-sm > .btn, .block-selector .block-selector-add .block-selector-add-toggle {
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+.btn.btn-md, .block-selector .block-selector-add .btn-md.block-selector-add-toggle {
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+.btn.btn-primary:hover, .block-selector .block-selector-add .btn-primary.block-selector-add-toggle:hover {
   background: #90caf9;
   border-color: #90caf9;
 }
-.btn.btn-secondary:hover {
+.btn.btn-secondary:hover, .block-selector .block-selector-add .block-selector-add-toggle:hover {
   background: #eaeaea;
   border-color: #eaeaea;
 }
-.btn.btn-danger:hover {
+.btn.btn-danger:hover, .block-selector .block-selector-add .btn-danger.block-selector-add-toggle:hover {
   background: #ffcdd2;
   border-color: #ffcdd2;
 }
@@ -20331,4 +20407,12 @@ fieldset.simsy-section legend {
   right: 15px;
   top: 15px;
   z-index: 9999;
+}
+
+.popover-danger {
+  border-color: #ffcdd2;
+}
+.popover-danger .popover-header {
+  background: #ffcdd2;
+  border-color: #ffcdd2;
 }

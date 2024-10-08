@@ -14,6 +14,20 @@ Encore
     .addEntry('simsy_cms_back', './src/assets/js/back/simsy.ts')
     .addEntry('simsy_cms_front', './src/assets/js/front/simsy.ts')
 
+    .copyFiles(
+        {
+            from: "./src/assets/images",
+
+            // optional target path, relative to the output dir
+            to: "images/[path][name].[ext]",
+
+            // if versioning is enabled, add the file hash too
+            //to: 'images/[path][name].[hash:8].[ext]',
+            // only copy files matching this pattern
+            pattern: /\.(png|jpg|jpeg|mp4|svg|mov|mp4|pdf|webp)$/,
+        }
+    )
+
     .enableSourceMaps(false)
     .enableVersioning(false)
     .disableSingleRuntimeChunk()

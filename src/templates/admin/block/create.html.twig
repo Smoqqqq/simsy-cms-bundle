@@ -1,15 +1,23 @@
-<turbo-frame id="section-{{ section.id }}-block-select-frame-{{ blockId }}" class="block-form-frame">
-    <div class="my-3 p-3 border-dashed-secondary">
+<turbo-frame id="section-{{ section.id }}-block-select-frame-{{ nextBlockId }}" class="block-form-frame">
+    <div class="block-form mb-4">
         {{ form_start(form) }}
 
-        {{ form_widget(form) }}
-
-        <div class="d-flex justify-content-between">
-            <a href="{{ path('simsy_cms_admin_block_select', { sectionId: section.id, blockId: blockId }) }}"
-               class="btn btn-secondary close-block-selector-toggle">{{ 'simsy_cms.cancel'|trans }}</a>
-            <button type="submit" class="btn btn-primary"
-                    onclick="this.parentNode.parentNode.querySelector('.close-block-selector-toggle').click()">{{ 'simsy_cms.save'|trans }}</button>
+        <div class="block-form-edit-actions">
+            <div class="name">{{ blockConfig.name }}</div>
+            <a href="{{ path('simsy_cms_admin_block_select', { sectionId: section.id, nextBlockId: nextBlockId }) }}"
+               class="btn btn-sm btn-secondary me-2 close-block-selector-toggle">{{ 'simsy_cms.cancel'|trans }} <i class="bi bi-x"></i></a>
+            <button type="submit" class="btn btn-sm btn-primary"
+                    onclick="this.parentNode.querySelector('.close-block-selector-toggle').click()">{{ 'simsy_cms.save'|trans }}
+                <i
+                        class="bi bi-floppy"></i></button>
         </div>
+
+        {% if blockConfig.form_template_path is not null %}
+            {% include blockConfig.form_template_path %}
+        {% else %}
+            {{ form_widget(form) }}
+        {% endif %}
+
         {{ form_end(form) }}
     </div>
 </turbo-frame>
