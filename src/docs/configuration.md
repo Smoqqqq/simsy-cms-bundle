@@ -29,9 +29,9 @@ simsy_cms:
         enabled: true                                                   # Enable or disable video compression (enabled by default)
         ffmpeg_config:
             ffmpeg:
-                binaries: 'C:\ProgramData\chocolatey\bin\ffmpeg.exe'    # Local ffmpeg binary path - only needed if not in $PATH
+                binaries: '/my/path/to/ffmpeg.exe'                      # Local ffmpeg binary path - only needed if not in $PATH
             ffprobe:
-                binaries: 'C:\ProgramData\chocolatey\bin\ffprobe.exe'   # Local ffprobe binary path - only needed if not in $PATH
+                binaries: '/my/path/to/ffprobe.exe'                     # Local ffprobe binary path - only needed if not in $PATH
 
         # These are default values
         audio_codec: 'aac'                                              # Any audio codec supported by ffmpeg
