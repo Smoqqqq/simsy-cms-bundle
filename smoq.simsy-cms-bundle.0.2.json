@@ -46,6 +46,23 @@
                         ""
                     ],
                     "executable": false
+                },
+                "config/packages/routes.yaml": {
+                    "contents": [
+                        "# Configure routes separately for the admin and public parts of the CMS",
+                        "simsy_cms_admin:",
+                        "    resource: '@SimsyCMSBundle/Resources/config/admin_routes.yaml'",
+                        "    prefix: '/simsy'",
+                        "",
+                        "simsy_cms_public:",
+                        "    resource: '@SimsyCMSBundle/Resources/config/public_routes.yaml'",
+                        "",
+                        "# You can also use the following to include all routes in one file",
+                        "# simsy_cms:",
+                        "#     resource: '@SimsyCMSBundle/Resources/config/routes.yaml'",
+                        ""
+                    ],
+                    "executable": false
                 }
             },
             "ref": "0da2e341254f8f66b57dbe7881611c674508aac4"
