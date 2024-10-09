@@ -5,14 +5,9 @@
   "bundles/simsycms/simsy_cms_front.js": "/bundles/simsycms/simsy_cms_front.js",
   "bundles/simsycms/fonts/bootstrap-icons.woff?": "/bundles/simsycms/fonts/bootstrap-icons.39795c0b.woff",
   "bundles/simsycms/fonts/bootstrap-icons.woff2?": "/bundles/simsycms/fonts/bootstrap-icons.b7bcc075.woff2",
-  "bundles/simsycms/images/dual_text_block.png": "/bundles/simsycms/images/dual_text_block.png",
-  "bundles/simsycms/images/dual_image_block.png": "/bundles/simsycms/images/dual_image_block.png",
-  "bundles/simsycms/images/single_video_block.png": "/bundles/simsycms/images/single_video_block.png",
-  "bundles/simsycms/images/single_image_block.png": "/bundles/simsycms/images/single_image_block.png",
-  "bundles/simsycms/images/single_text_block.png": "/bundles/simsycms/images/single_text_block.png",
   "bundles/simsycms/images/blocks/dual_text_block.png": "/bundles/simsycms/images/blocks/dual_text_block.png",
   "bundles/simsycms/images/blocks/dual_image_block.png": "/bundles/simsycms/images/blocks/dual_image_block.png",
+  "bundles/simsycms/images/blocks/single_video_block.png": "/bundles/simsycms/images/blocks/single_video_block.png",
   "bundles/simsycms/images/blocks/single_image_block.png": "/bundles/simsycms/images/blocks/single_image_block.png",
-  "bundles/simsycms/images/blocks/single_text_block.png": "/bundles/simsycms/images/blocks/single_text_block.png",
-  "bundles/simsycms/images/blocks/single_video_block.png": "/bundles/simsycms/images/blocks/single_video_block.png"
+  "bundles/simsycms/images/blocks/single_text_block.png": "/bundles/simsycms/images/blocks/single_text_block.png"
 }

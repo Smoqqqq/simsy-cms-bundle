@@ -25,7 +25,9 @@
         "symfony/ux-turbo": "^2.20",
         "symfony/translation": "^7.1",
         "willdurand/js-translation-bundle": "^6.1",
-        "symfony/validator": "^7.1"
+        "symfony/validator": "^7.1",
+        "ext-gd": "*",
+        "php-ffmpeg/php-ffmpeg": "^1.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.17",

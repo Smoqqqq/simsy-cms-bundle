@@ -104,3 +104,6 @@ If you encounter an error related to the Block's discriminatory map, try clearin
 ```bash
 php bin/console cache:clear
 ```
+
+## Uploading files in custom blocks
+File upload already is managed by Simsy. Get automatic upload as well as image and video compression by using the `Smoq\SimsyCMS\Entity\Media` entity and the `Smoq\SimsyCMS\Form\MediaType` form type. Files will be uploaded to the `public/simsy_cms_user_media/` directory.

@@ -33,3 +33,8 @@ icons
         </div>
     </div>
 ```
+
+## Roadmap
+- [ ] Allow re-ordering sections
+- [ ] Allow 'no-index' on pages
+- [ ] Compress images automatically

@@ -20,12 +20,20 @@ class SimsyCMSExtension extends Extension implements ExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('simsy_cms.custom_blocks', $config['custom_blocks']);
+        if (isset($config['custom_blocks'])) {
+            $container->setParameter('simsy_cms', $config['custom_blocks']);
+        }
+        if (isset($config['video_compression'])) {
+            $container->setParameter('simsy_cms.video_compression', $config['video_compression']);
+        }
+        if (isset($config['image_compression'])) {
+            $container->setParameter('simsy_cms.image_compression', $config['image_compression']);
+        }
     }
 }
