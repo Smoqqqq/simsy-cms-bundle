@@ -47,7 +47,7 @@
                     ],
                     "executable": false
                 },
-                "config/routes.yaml": {
+                "config/routes/simsy_cms.yaml": {
                     "contents": [
                         "# Configure routes separately for the admin and public parts of the CMS",
                         "simsy_cms_admin:",
@@ -65,7 +65,7 @@
                     "executable": false
                 }
             },
-            "ref": "2d825d2975a04bb8db7dd696bad95e97c273f330"
+            "ref": "c3c8c71486661760e59673ba1533f1e4c250fda9"
         }
     }
 }
